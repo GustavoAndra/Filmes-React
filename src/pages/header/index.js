@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../header/header.css'; // Certifique-se de importar seu arquivo CSS personalizado
+import './style.css'; // Certifique-se de importar seu arquivo CSS personalizado
 
 const Header = () => {
   const [navEngolindo, setNavEngolindo] = useState(false);
