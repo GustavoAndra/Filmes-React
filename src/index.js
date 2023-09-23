@@ -5,6 +5,7 @@ import Header from './componente/header/index';
 import Footer from './componente/footer/index';
 import App from "./App";
 import SeriesComponent from "./componente/series/index"
+import Proposta from "./componente/proposta/index"
 import { ThemeProvider } from './componente/Theme/ThemeContext';
 import "./global.css";
 
@@ -16,6 +17,7 @@ root.render(
     <Header /> {/* Usando o componente Header */}
       <App />
       <SeriesComponent/>
+      <Proposta/>
        <Footer />
        </ThemeProvider> 
     </BrowserRouter>

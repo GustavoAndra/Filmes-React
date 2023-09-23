@@ -1,7 +1,16 @@
 * {
   margin: 0;
   padding: 0;
+}.App {
+  background-color: #ffffff;
+  color: #000000;
 }
+
+/* Classe para o tema escuro */
+.App.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+} 
 body {
   background-color: #000;
   color: white;
