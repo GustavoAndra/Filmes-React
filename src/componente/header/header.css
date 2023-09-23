@@ -1,3 +1,4 @@
+ 
 *,
 *::after,
 *::before {
@@ -9,6 +10,11 @@
 html {
   font-size: 62.5%;
   overflow-x: hidden; /* Impede o scroll horizontal */
+}
+.nav-img {
+  width: 100px; /* Defina a largura desejada */
+  height: auto; /* Mantém a proporção de altura original */
+  border-radius: 50%
 }
 body {
   font-size: 1.6rem;
@@ -28,6 +34,7 @@ a {
   justify-content: space-around;
   height: 8vh;
   background: #000;
+  margin-bottom: 30px
 }
 .nav__brand {
   text-transform: uppercase;
@@ -57,7 +64,7 @@ a {
     position: absolute;
     margin-top: 10px;
     color: #000;
-    top: 7vh;
+    top: 15vh;
     right: 0;
     height: 100%;
     width: 100%;

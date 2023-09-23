@@ -1,0 +1,11 @@
+/* Tema claro por padrão */
+.App {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Classe para o tema escuro */
+  .App.dark-mode {
+    background-color: #000000;
+    color: #ffffff;
+  }  

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./style.css";
-
+import "./header.css";
+import Logo from '../img/Logo-Header.jpg';
 function Header() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
@@ -27,9 +27,9 @@ function Header() {
 
   return (
     <nav className="nav">
-      <h1 href="#" className="nav__brand">
-        ReelMagic
-      </h1>
+       
+        <img className="nav-img"  src={Logo} alt="Logo da ReelMagic" /> {/* Use a imagem como logo */}
+
       <ul className={active}>
         <li className="nav__item">
           <a href="#home" className="nav__link">

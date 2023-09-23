@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './series.css'; 
+import { useTheme } from '../Theme/ThemeContext';
 import Harry from '../img/Harry-Série.jpg';
 import Harry2 from '../img/Harry-Série-3.jpg';
 import Harry3 from '../img/Harry-Série-4.jpg';
@@ -11,6 +12,7 @@ import Harry6 from '../img/Harry-Série-6.jpg';
 
 const SeriesComponent = () => {
   const isSmallScreen = window.innerWidth < 768; // Define um ponto de corte para telas pequenas
+  const { darkMode} = useTheme();
 
   const carouselSettings = {
     dots: true,
@@ -23,7 +25,7 @@ const SeriesComponent = () => {
   };
 
   return (
-    <section id="series">
+    <section id="series" className={darkMode ? 'dark-mode' : ''}>
       <h1 id="serie">Queridinhos do Momento</h1>
       <Slider {...carouselSettings}>
         {/* Primeiro Slide */}
