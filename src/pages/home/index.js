@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Container, Movie, Btn } from './style';
+import { Container, Movie, Btn, ScrollToTop, ScrollToTopButton } from './style';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import { FaFlag, FaStar } from 'react-icons/fa'; // Importe os ícones
-
+import { FaFlag, FaStar } from 'react-icons/fa';
 
 function Home() {
   const imagePath = 'https://image.tmdb.org/t/p/w500';
@@ -15,13 +14,14 @@ function Home() {
     dots: true,
     infinite: true,
     speed: 800,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 7000,
+    autoplaySpeed: 6000,
   };
 
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
@@ -32,8 +32,23 @@ function Home() {
       });
   }, [KEY]);
 
-  // Divide a lista de filmes em partes para criar carrosséis separados
-  const chunkSize = 10;
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 100) {
+        setShowScrollToTop(true);
+      } else {
+        setShowScrollToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const chunkSize = 8;
   const movieChunks = [];
   for (let i = 0; i < movies.length; i += chunkSize) {
     movieChunks.push(movies.slice(i, i + chunkSize));
@@ -45,6 +60,9 @@ function Home() {
       <p>
         Explore uma ampla variedade de filmes que atendem a todos os gostos e gêneros. De ação a comédia, de drama a aventura, temos algo para todos.
       </p>
+      <ScrollToTop isVisible={showScrollToTop}>
+        <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
+      </ScrollToTop>
       {loading ? (
         <p>Carregando filmes...</p>
       ) : (
@@ -55,10 +73,10 @@ function Home() {
                 <Slider
                   key={index}
                   {...carouselSettings}
-                  slidesToShow={matches ? 1 : 5} // Altere o número de slides visíveis com base no tamanho da tela
+                  slidesToShow={matches ? 1 : 3}
                 >
                   {chunk.map((movie) => (
-                    <Movie>
+                    <Movie key={movie.id}>
                       <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
                       <div className="movie-info">
                         <span>{movie.title}</span>
