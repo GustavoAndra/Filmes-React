@@ -78,7 +78,7 @@ const SeriesComponent = () => {
             <div className="row g-0">
               <div className="col-md-4">
                 <img className="card-img" src={Harry5} alt="Sempre evoluindo" />
-              </div>
+              </div> {/*Esse código não é meu, Roubei :)*/}
               <div className="col-md-8">
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>

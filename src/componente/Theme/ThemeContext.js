@@ -13,7 +13,7 @@ export function ThemeProvider({ children }) {
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleTheme }}>
-      {children}
+      {children}{/*Esse código não é meu, Roubei :)*/}
     </ThemeContext.Provider>
   );
 }

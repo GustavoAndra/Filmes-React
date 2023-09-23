@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home/index";
-import Movie from "./pages/movie/index";
+import Home from "./componente/home/index";
+import Movie from "./componente/movie/index";
 
 const App = () => {
     return (
