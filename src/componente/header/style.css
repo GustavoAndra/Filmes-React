@@ -1,12 +1,9 @@
-*{
-  overflow-x: hidden; /* Impede o scroll horizontal */
-}
+*,
 *::after,
 *::before {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden; /* Impede o scroll horizontal */
 }
 html {
   font-size: 62.5%;
@@ -73,10 +70,8 @@ a {
   } a{
     color: #000;
   }
-  .button-28{
+  .nav__link{
     border: none;
-    background-color: #fff;
-    color: #000;
     cursor: pointer;
     font-size: 16px;
     padding: 5px 5px;
@@ -135,7 +130,7 @@ a {
   color: #fff;
 }
 
-.button-28 {
+.nav__link {
   border: none;
   background-color: #000;
   color: #fff;
@@ -146,13 +141,13 @@ a {
   text-decoration: none;
   width: 100%;
 }
-.button-28:disabled {
+.nav__link:disabled {
   pointer-events: none;
 }
-.button-28:hover {
+.nav__link:hover {
   transform: translateY(-2px);
 }
-.button-28:active {
+.nav__link:active {
   box-shadow: none;
   transform: translateY(0);
 }

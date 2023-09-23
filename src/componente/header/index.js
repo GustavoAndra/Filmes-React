@@ -42,7 +42,7 @@ function Header() {
           </a>
         </li>
         <li className="nav__item dropdown">
-          <button class="button-28" role="button" onClick={toggleGenresDropdown} className="nav__link">
+          <button role="button" onClick={toggleGenresDropdown} className="nav__link">
             Gêneros
           </button>
           {genresActive && (
