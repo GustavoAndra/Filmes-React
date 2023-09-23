@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Container, Movie, Btn, ScrollToTop, ScrollToTopButton } from './style';
+import { Container, Movie, Btn, ScrollToTop, ScrollToTopButton } from './home';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import { FaFlag, FaStar } from 'react-icons/fa';
