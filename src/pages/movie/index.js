@@ -26,9 +26,7 @@ const Movie = () => {
 
     return (
         <div>
-            <nav>
-                <h1>Movie</h1>
-            </nav>
+         
             <img
                 className="img_movie"
                 src={`${imagePath}${movie.poster_path}`}
