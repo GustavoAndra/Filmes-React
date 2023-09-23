@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Container, Movie } from './style';
+import { Container, Movie, Btn } from './style';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
+import { FaFlag, FaStar } from 'react-icons/fa'; // Importe os ícones
+
 
 function Home() {
   const imagePath = 'https://image.tmdb.org/t/p/w500';
@@ -15,7 +17,7 @@ function Home() {
     speed: 800,
     slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 7000,
   };
 
   const [movies, setMovies] = useState([]);
@@ -39,7 +41,10 @@ function Home() {
 
   return (
     <Container>
-      <h1>Movies</h1>
+      <h1>Seja bem-vindo ao ReelMagic</h1>
+      <p>
+        Explore uma ampla variedade de filmes que atendem a todos os gostos e gêneros. De ação a comédia, de drama a aventura, temos algo para todos.
+      </p>
       {loading ? (
         <p>Carregando filmes...</p>
       ) : (
@@ -53,14 +58,23 @@ function Home() {
                   slidesToShow={matches ? 1 : 5} // Altere o número de slides visíveis com base no tamanho da tela
                 >
                   {chunk.map((movie) => (
-                    <Link to={`/${movie.id}`} key={movie.id} style={{ textDecoration: 'none' }}>
-                      <Movie>
-                        <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                    <Movie>
+                      <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                      <div className="movie-info">
                         <span>{movie.title}</span>
-                        <p>Avaliação: {movie.vote_average}</p>
-                        {/* O restante do conteúdo do card */}
-                      </Movie>
-                    </Link>
+                        <div className="icons">
+                          <p>
+                            <FaFlag className="icon" /> Salvar
+                          </p>
+                          <p className="star-rating">
+                            <FaStar className="star-icon" /> Avaliação: <span className="yellow-text">{movie.vote_average}</span>
+                          </p>
+                        </div>
+                      </div>
+                      <Link to={`/${movie.id}`}>
+                        <Btn>Detalhes</Btn>
+                      </Link>
+                    </Movie>
                   ))}
                 </Slider>
               )}

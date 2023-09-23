@@ -8,6 +8,7 @@ export const Container = styled.div`
   }a {
     text-decoration: none;
   }
+  
 `;
 
 export const MovieList = styled.ul`
@@ -49,4 +50,16 @@ export const Movie = styled.li`
   a {
     text-decoration: none;
   }
+
+`;export const Btn = styled.button`
+margin-top: 5px;
+padding: 0.7rem 3rem;
+border: none;
+border-radius: 15px;
+color: #212121;
+background-color: #ffffff;
+font-weight: 1000;
+font-size: 12 px;
+cursor: pointer;
+transition: all 250ms;
 `;
