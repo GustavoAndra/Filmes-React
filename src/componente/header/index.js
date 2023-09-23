@@ -41,6 +41,11 @@ function Header() {
             Filmes
           </a>
         </li>
+        <li className="nav__item">
+          <a href="#series" className="nav__link">
+            Series
+          </a>
+        </li>
         <li className="nav__item dropdown">
           <button role="button" onClick={toggleGenresDropdown} className="nav__link">
             Gêneros
@@ -63,13 +68,8 @@ function Header() {
           )}
         </li>
         <li className="nav__item">
-          <a href="#series" className="nav__link">
-            Series
-          </a>
-        </li>
-        <li className="nav__item">
           <a href="#contatos" className="nav__link">
-            Contact
+            Contatos
           </a>
         </li>
       </ul>
