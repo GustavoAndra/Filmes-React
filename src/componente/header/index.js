@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./header.css";
 import Logo from '../img/Logo-Header.jpg';
+
 function Header() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
-  const [genresActive, setGenresActive] = useState(false); // State para controle do dropdown de gêneros
+  const [genresActive, setGenresActive] = useState(false);
 
   const navToggle = () => {
     if (active === "nav__menu") {
@@ -13,7 +14,6 @@ function Header() {
       setActive("nav__menu");
     }
 
-    // Icon Toggler
     if (icon === "nav__toggler") {
       setIcon("nav__toggler toggle");
     } else {
@@ -25,24 +25,28 @@ function Header() {
     setGenresActive(!genresActive);
   };
 
+  const closeMenu = () => {
+    setActive("nav__menu");
+    setIcon("nav__toggler");
+  };
+
   return (
     <nav className="nav">
-       
-        <img className="nav-img"  src={Logo} alt="Logo da ReelMagic" /> {/* Use a imagem como logo */}
+      <img className="nav-img" src={Logo} alt="Logo da ReelMagic" />
 
       <ul className={active}>
         <li className="nav__item">
-          <a href="#home" className="nav__link">
+          <a href="#home" className="nav__link" onClick={closeMenu}>
             Home
           </a>
         </li>
         <li className="nav__item">
-          <a href="#filmes" className="nav__link">
+          <a href="#filmes" className="nav__link" onClick={closeMenu}>
             Filmes
           </a>
         </li>
         <li className="nav__item">
-          <a href="#series" className="nav__link">
+          <a href="#series" className="nav__link" onClick={closeMenu}>
             Series
           </a>
         </li>
@@ -53,22 +57,30 @@ function Header() {
           {genresActive && (
             <ul className="dropdown-content">
               <li>
-                <a href="#">Ação</a>
+                <a href="#" onClick={closeMenu}>
+                  Ação
+                </a>
               </li>
               <li>
-                <a href="#">Comedia</a>
+                <a href="#" onClick={closeMenu}>
+                  Comédia
+                </a>
               </li>
               <li>
-                <a href="#">Drama</a>
+                <a href="#" onClick={closeMenu}>
+                  Drama
+                </a>
               </li>
               <li>
-                <a href="#">Terror</a>
+                <a href="#" onClick={closeMenu}>
+                  Terror
+                </a>
               </li>
             </ul>
           )}
         </li>
         <li className="nav__item">
-          <a href="#contatos" className="nav__link">
+          <a href="#contatos" className="nav__link" onClick={closeMenu}>
             Contatos
           </a>
         </li>

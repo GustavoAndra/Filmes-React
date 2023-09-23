@@ -1,5 +1,4 @@
- 
-*,
+ *,
 *::after,
 *::before {
   padding:0;
@@ -43,6 +42,9 @@ a {
   justify-content: space-around;
   gap: 3rem;
 }
+.nav__toggler {
+  display: none;
+}
 .nav__toggler div {
   width: 2.5rem;
   height: 0.2rem;
@@ -51,7 +53,10 @@ a {
   transition: 0.1s ease-in;
 }
 @media screen and (max-width: 768px) {
-
+  .nav__toggler {
+    display: block;
+    cursor: pointer;
+  }
   .nav__menu {
     position: fixed;
     margin-top: 10px;
