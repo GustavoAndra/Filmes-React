@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import Header from './componente/header/index'; 
 import Footer from './componente/footer/index';
 import App from "./App";
+import SeriesComponent from "./componente/series/index"
 import "./global.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -12,6 +13,7 @@ root.render(
     <BrowserRouter>
     <Header /> {/* Usando o componente Header */}
       <App />
+      <SeriesComponent/>
        <Footer />
     </BrowserRouter>
   </React.StrictMode>

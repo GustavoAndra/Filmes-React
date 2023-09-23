@@ -32,12 +32,12 @@ function Header() {
       </h1>
       <ul className={active}>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="#home" className="nav__link">
             Home
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="#filmes" className="nav__link">
             Filmes
           </a>
         </li>
@@ -63,12 +63,12 @@ function Header() {
           )}
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
-            TV Shows
+          <a href="#series" className="nav__link">
+            Series
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
+          <a href="#contatos" className="nav__link">
             Contact
           </a>
         </li>

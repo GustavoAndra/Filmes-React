@@ -15,7 +15,6 @@ export const Container = styled.div`
 export const MovieList = styled.ul`
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem; /* Espaço entre os cards */
 `;
 
@@ -26,9 +25,8 @@ export const Movie = styled.li`
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   overflow: hidden;
-  margin-bottom: 10rem; /* Espaço entre os cards */
   padding: 5px;
-  margin: 5rem;
+  margin: 1rem; /* Espaço entre os cards */
 
   &:hover {
     transform: scale(1.05);
@@ -52,9 +50,8 @@ export const Movie = styled.li`
   }
 
   span {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+    font-size: 1rem; /* Reduza o tamanho da fonte */
+    margin-bottom: 0.5rem; /* Reduza o espaçamento inferior */
     display: block;
   }
 
@@ -62,23 +59,25 @@ export const Movie = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 0.5rem; /* Reduza o espaçamento superior */
   }
 
   p {
     display: flex;
     align-items: center;
-    font-size: 0.9rem;
+    font-size: 15px; /* Reduza o tamanho da fonte */
   }
 
   .icon {
-    margin-right: 0.5rem;
+    margin-right: 0.3rem; /* Reduza a margem direita */
   }
+
   @media (max-width: 768px) {
-    /* Para telas pequenas (até 768px), reduza a margem para 2rem */
-    margin: 0;
+    /* Para telas pequenas (até 768px), reduza o tamanho dos cards */
+    padding: 1rem; /* Reduza o espaçamento do container */
   }
 `;
+
 
 export const Btn = styled.button`
   margin-top: 5px;
@@ -98,6 +97,7 @@ export const Btn = styled.button`
 `;
 
 export const ScrollToTop = styled.div`
+z-index:1;
   position: fixed;
   bottom: 20px;
   right: 20px;

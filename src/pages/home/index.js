@@ -56,51 +56,53 @@ function Home() {
 
   return (
     <Container>
-      <h1>Seja bem-vindo ao ReelMagic</h1>
-      <p>
-        Explore uma ampla variedade de filmes que atendem a todos os gostos e gêneros. De ação a comédia, de drama a aventura, temos algo para todos.
-      </p>
-      <ScrollToTop isVisible={showScrollToTop}>
-        <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
-      </ScrollToTop>
-      {loading ? (
-        <p>Carregando filmes...</p>
-      ) : (
-        <>
-          {movieChunks.map((chunk, index) => (
-            <MediaQuery key={index} maxWidth={768}>
-              {(matches) => (
-                <Slider
-                  key={index}
-                  {...carouselSettings}
-                  slidesToShow={matches ? 1 : 3}
-                >
-                  {chunk.map((movie) => (
-                    <Movie key={movie.id}>
-                      <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                      <div className="movie-info">
-                        <span>{movie.title}</span>
-                        <div className="icons">
-                          <p>
-                            <FaFlag className="icon" /> Salvar
-                          </p>
-                          <p className="star-rating">
-                            <FaStar className="star-icon" /> Avaliação: <span className="yellow-text">{movie.vote_average}</span>
-                          </p>
-                        </div>
+    <h1>Seja bem-vindo ao ReelMagic</h1>
+    <p>
+      Explore uma ampla variedade de filmes que atendem a todos os gostos e gêneros. De ação a comédia, de drama a aventura, temos algo para todos.
+    </p>
+    <ScrollToTop isVisible={showScrollToTop}>
+      <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
+    </ScrollToTop>
+    {loading ? (
+      <p>Carregando filmes...</p>
+    ) : (
+      <>
+        <h1>Favoritos da semana</h1> {/* Cabeçalho fora do loop */}
+        {movieChunks.map((chunk, index) => (
+          <MediaQuery key={index} maxWidth={768}>
+            {(matches) => (
+              <Slider
+                key={index}
+                {...carouselSettings}
+                slidesToShow={matches ? 1 : 4}
+              >
+                {chunk.map((movie) => (
+                  <Movie key={movie.id}>
+                    <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                    <div className="movie-info">
+                      <span>{movie.title}</span>
+                      <div className="icons">
+                        <p>
+                          <FaFlag className="icon" /> Salvar
+                        </p>
+                        <p className="star-rating">
+                          <FaStar className="star-icon" /> Avaliação: <span className="yellow-text">{movie.vote_average}</span>
+                        </p>
                       </div>
-                      <Link to={`/${movie.id}`}>
-                        <Btn>Detalhes</Btn>
-                      </Link>
-                    </Movie>
-                  ))}
-                </Slider>
-              )}
-            </MediaQuery>
-          ))}
-        </>
-      )}
-    </Container>
+                    </div>
+                    <Link to={`/${movie.id}`}>
+                      <Btn>Detalhes</Btn>
+                    </Link>
+                  </Movie>
+                ))}
+              </Slider>
+            )}
+          </MediaQuery>
+        ))}
+      </>
+    )}
+  </Container>
+  
   );
 }
 
