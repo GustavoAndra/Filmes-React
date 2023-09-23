@@ -28,7 +28,7 @@ export const Movie = styled.li`
   overflow: hidden;
   margin-bottom: 10rem; /* Espaço entre os cards */
   padding: 5px;
-  
+  margin: 5rem;
 
   &:hover {
     transform: scale(1.05);
@@ -73,6 +73,10 @@ export const Movie = styled.li`
 
   .icon {
     margin-right: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    /* Para telas pequenas (até 768px), reduza a margem para 2rem */
+    margin: 0;
   }
 `;
 

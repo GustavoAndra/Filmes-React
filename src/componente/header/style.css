@@ -1,12 +1,16 @@
-*,
+*{
+  overflow-x: hidden; /* Impede o scroll horizontal */
+}
 *::after,
 *::before {
   margin: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden; /* Impede o scroll horizontal */
 }
 html {
   font-size: 62.5%;
+  overflow-x: hidden; /* Impede o scroll horizontal */
 }
 body {
   font-size: 1.6rem;
@@ -104,7 +108,6 @@ a {
 
 /* Estilização do conteúdo do dropdown */
 .dropdown-content {
-
   position: absolute;
   background-color: #3f16af56;
   min-width: 160px;
