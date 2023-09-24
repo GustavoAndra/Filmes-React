@@ -30,7 +30,7 @@ function Proposta() {
     <section id="planos">
        <div className="proposta">
       <h1>Super Promoção! Assine Nossos Planos Agora e Economize!</h1>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           {subscriptions.map((subscription) => (
             <div key={subscription.id} className="col-md-4">
