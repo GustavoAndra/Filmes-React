@@ -21,7 +21,7 @@ li {
 }
 a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
 } a:hover{
   color: #FFD700;
 }
@@ -30,7 +30,6 @@ a {
   align-items: center;
   justify-content: space-around;
   height: 8vh;
-  background: #000;
   margin-bottom: 30px
 }
 .nav__brand {
@@ -49,10 +48,16 @@ a {
   width: 2.5rem;
   height: 0.2rem;
   margin: 0.4rem;
-  background: #fff;
+  background: #e6e4ff;
   transition: 0.1s ease-in;
 }
 @media screen and (max-width: 768px) {
+  a.nav__link{
+    color: #000;
+    font-weight: 800;
+  }a:hover{
+    color: #700000;
+  }
   .nav__toggler {
     display: block;
     cursor: pointer;
@@ -60,27 +65,15 @@ a {
   .nav__menu {
     position: fixed;
     margin-top: 10px;
-    color: #000;
     top: 15vh;
     right: 0;
     height: 100%;
     width: 100%;
-    background: #fff;
+    background: #e7deff;
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.5s ease-in;
-  } a{
-    color: #000;
-  }
-  .nav__link{
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-  }
+  } 
 }
 .nav__active {
   z-index:1;
@@ -123,12 +116,11 @@ a {
 }
 /* Efeito hover para os itens */
 .dropdown-content a:hover {
-  background-color: #000; /* Cor de destaque */
-  color: #fff;
+  background-color: #fff; /* Cor de destaque */
+  color: #000;
 }
 .nav__link {
   border: none;
-  background-color: #000;
   color: #fff;
   cursor: pointer;
   font-size: 16px;

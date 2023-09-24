@@ -5,8 +5,6 @@ import Logo from '../img/Logo-Header.jpg';
 function Header() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
-  const [genresActive, setGenresActive] = useState(false);
-
   const navToggle = () => {
     if (active === "nav__menu") {
       setActive("nav__menu nav__active");
@@ -19,10 +17,6 @@ function Header() {
     } else {
       setIcon("nav__toggler");
     }
-  };
-
-  const toggleGenresDropdown = () => {
-    setGenresActive(!genresActive);
   };
 
   const closeMenu = () => {
@@ -46,38 +40,14 @@ function Header() {
           </a>
         </li>
         <li className="nav__item">
+          <a href="#filmes" className="nav__link" onClick={closeMenu}>
+            Tv Shows
+          </a>
+        </li>
+        <li className="nav__item">
           <a href="#series" className="nav__link" onClick={closeMenu}>
             Series
           </a>
-        </li>
-        <li className="nav__item dropdown">
-          <button role="button" onClick={toggleGenresDropdown} className="nav__link">
-            Gêneros
-          </button>
-          {genresActive && (
-            <ul className="dropdown-content">
-              <li>
-                <a href="#" onClick={closeMenu}>
-                  Ação
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={closeMenu}>
-                  Comédia
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={closeMenu}>
-                  Drama
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={closeMenu}>
-                  Terror
-                </a>
-              </li>
-            </ul>
-          )}
         </li>
         <li className="nav__item">
           <a href="#contatos" className="nav__link" onClick={closeMenu}>

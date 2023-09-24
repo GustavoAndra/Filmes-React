@@ -17,6 +17,7 @@ function Home() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
+    arrows: false
   };
 
   const [movies, setMovies] = useState([]);
@@ -86,7 +87,8 @@ function Home() {
                           <FaFlag className="icon" /> Salvar
                         </p>
                         <p className="star-rating">
-                          <FaStar className="star-icon" /> Avaliação: <span className="yellow-text">{movie.vote_average}</span>
+                        <FaStar className="star-icon" style={{ color: "yellow" }}/> Avaliação: <span style={{ color: "yellow", fontSize:'15px' }}>{movie.vote_average}</span>
+
                         </p>
                       </div>
                     </div>

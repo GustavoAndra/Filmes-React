@@ -1,12 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  
 }.App {
   background-color: #ffffff;
   color: #000000;
 }
-
 /* Classe para o tema escuro */
 .App.dark-mode {
   background-color: #000000;
@@ -17,7 +15,6 @@ body {
   color: white;
   -ms-overflow-style: none;
   scrollbar-width: none;  
-  overflow: hidden;
 }
 ::-webkit-scrollbar {
   display: none;
