@@ -30,7 +30,7 @@ function Header() {
 
       <ul className={active}>
         <li className="nav__item">
-          <a href="#home" className="nav__link" onClick={closeMenu}>
+          <a href="/" className="nav__link" onClick={closeMenu}>
             Home
           </a>
         </li>
@@ -40,8 +40,8 @@ function Header() {
           </a>
         </li>
         <li className="nav__item">
-          <a href="#filmes" className="nav__link" onClick={closeMenu}>
-            Tv Shows
+          <a href="#planos" className="nav__link" onClick={closeMenu}>
+            Planos
           </a>
         </li>
         <li className="nav__item">

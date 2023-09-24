@@ -64,7 +64,8 @@ function Home() {
 
   return (
     <Container>
-      <h1>Seja bem-vindo ao ReelMagic</h1>
+      <section id='filmes'>
+         <h1>Seja bem-vindo ao ReelMagic</h1>
    
       <ScrollToTop isVisible={showScrollToTop}>
         <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
@@ -87,13 +88,12 @@ function Home() {
                       <Movie key={movie.id}>
                         <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
                         <div className="movie-info">
-                          <span>{movie.title}</span>
                           <div className="icons">
                             <p>
                               <FaFlag className="icon" /> Salvar
                             </p>
-                            <p className="star-rating">
-                              <FaStar className="star-icon" style={{ color: "yellow" }}/> Avaliação: <span style={{ color: "yellow", fontSize:'15px' }}>{movie.vote_average}</span>
+                            <p >
+                              <FaStar className="star-icon" style={{ color: "yellow",marginBottom: "7px", marginRight: "0.5rem" }}/><span style={{ color: "yellow", fontSize:'15px' }}>{movie.vote_average}</span>
                             </p>
                           </div>
                         </div>
@@ -109,6 +109,8 @@ function Home() {
           ))}
         </>
       )}
+      </section>
+     
     </Container>
   );
 }

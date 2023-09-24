@@ -27,7 +27,8 @@ const subscriptions = [
 
 function Proposta() {
   return (
-    <div className="proposta">
+    <section id="planos">
+       <div className="proposta">
       <h1>Super Promoção! Assine Nossos Planos Agora e Economize!</h1>
       <div className="container">
         <div className="row">
@@ -49,6 +50,8 @@ function Proposta() {
         </div>
       </div>
     </div>
+    </section>
+   
   );
 }
 

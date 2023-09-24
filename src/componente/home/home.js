@@ -68,11 +68,12 @@ export const Movie = styled.li`
   p {
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
     font-size: 15px; /* Reduza o tamanho da fonte */
   }
 
   .icon {
-    margin-right: 0.3rem; /* Reduza a margem direita */
+    margin-right: 0.5rem; /* Reduza a margem direita */
   }
 
   @media (max-width: 768px) {
@@ -86,21 +87,23 @@ export const Btn = styled.button`
   margin-top: 5px;
   padding: 0.7rem 1rem;
   border: none;
-  border-radius: 15px;
+  border-radius: 5px;
   color: #fff;
   background-color: #007bff;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
 
   &:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Efeito de escala ao passar o mouse */
   }
 `;
 
 export const ScrollToTop = styled.div`
-z-index:1;
+  z-index:1;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -110,7 +113,7 @@ z-index:1;
 
 export const ScrollToTopButton = styled.a`
   display: block;
-  background-color: #007bff;
+  background-color: #000;
   color: #fff;
   text-align: center;
   width: 40px;
@@ -122,6 +125,6 @@ export const ScrollToTopButton = styled.a`
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #fff;
   }
 `;
