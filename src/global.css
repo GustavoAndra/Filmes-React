@@ -1,7 +1,9 @@
 * {
   margin: 0;
   padding: 0;
-}.App {
+  overflow-x: hidden;
+  }
+.App {
   background-color: #ffffff;
   color: #000000;
 }
@@ -14,7 +16,7 @@ body {
   background-color: #000;
   color: white;
   -ms-overflow-style: none;
-  scrollbar-width: none;  
+  scrollbar-width: none;    
 }
 ::-webkit-scrollbar {
   display: none;
