@@ -16,9 +16,25 @@ h1 {
 .subscription-card:hover{
   transform: scale(1) translateY(20px);
 }
+
+/* Estilo para o efeito neon */
 h3 {
-  color: #333;
-  font-size: 1.5rem;
+  font-size: 2rem; /* Tamanho da fonte */
+  color: #fff; /* Cor do texto */
+  text-align: center; /* Alinhamento do texto */
+  text-transform: uppercase; /* Transformar o texto em maiúsculas */
+  position: relative; /* Posição relativa para adicionar o brilho */
+  animation: neon 1.5s ease-in-out infinite alternate; /* Animação de brilho */
+}
+
+/* Animação de brilho */
+@keyframes neon {
+  0% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #af2369, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  100% {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #000000, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073, 0 0 80px #e60073, 0 0 90px #e60073;
+  }
 }
 
 .old-price {

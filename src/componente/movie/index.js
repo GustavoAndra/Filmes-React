@@ -25,9 +25,10 @@ const Movie = () => {
   }, []);
 
   return (
-    <div className="container mt-4">
+    <section id="botao">
+       <div className="container mt-4">
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-lg-4">
           <img
             className="img-fluid"
             src={`${imagePath}${movie.poster_path}`}
@@ -36,7 +37,7 @@ const Movie = () => {
         </div>
         <div className="col-lg-6">
           <h1>{movie.title}</h1>
-          <h3>Data de lançamento: {movie.release_date}</h3>
+          <h2 id="lancamento">Data de lançamento: {movie.release_date}</h2>
           <div className="descricao">
             <h4>Descrição: </h4>
             <p className="movie-desc">{movie.overview}</p>
@@ -47,6 +48,8 @@ const Movie = () => {
         </div>
       </div>
     </div>
+    </section>
+   
   );
 };
 

@@ -113,8 +113,8 @@ export const ScrollToTop = styled.div`
 
 export const ScrollToTopButton = styled.a`
   display: block;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   text-align: center;
   width: 40px;
   height: 40px;

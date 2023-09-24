@@ -1,3 +1,6 @@
+#lancamento{
+  font-size: medium;
+}
 .movie-container {
     display: flex;
     align-items: flex-start; /* Alinha os elementos verticalmente ao topo */
@@ -10,21 +13,11 @@
   }
 
   .img-fluid {
-    max-width: 50%; /* Garante que a imagem não ultrapasse o contêiner */
+    max-width: 90%; /* Garante que a imagem não ultrapasse o contêiner */
     border-radius: 15px;
     align-items: center;
   }
   
   .movie-details {
     flex: 2; /* Os detalhes ocupam 2/3 do espaço disponível */
-  }
-  @keyframes h1 {
-    0% {
-      transform: scale(0);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
   }

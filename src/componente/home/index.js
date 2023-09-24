@@ -98,7 +98,7 @@ function Home() {
                           </div>
                         </div>
                         <Link to={`/${movie.id}`}>
-                          <Btn>Detalhes</Btn>
+                          <Btn id='#botao'>Detalhes</Btn>
                         </Link>
                       </Movie>
                     ))}

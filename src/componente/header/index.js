@@ -39,14 +39,14 @@ function Header() {
             Filmes
           </a>
         </li>
-        <li className="nav__item">
-          <a href="#planos" className="nav__link" onClick={closeMenu}>
-            Planos
+         <li className="nav__item">
+          <a href="#series" className="nav__link" onClick={closeMenu}>
+            Series
           </a>
         </li>
         <li className="nav__item">
-          <a href="#series" className="nav__link" onClick={closeMenu}>
-            Series
+          <a href="#planos" className="nav__link" onClick={closeMenu}>
+            Planos
           </a>
         </li>
         <li className="nav__item">
