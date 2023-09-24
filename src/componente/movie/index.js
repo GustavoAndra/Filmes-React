@@ -43,7 +43,7 @@ const Movie = () => {
             <p className="movie-desc">{movie.overview}</p>
           </div>
           <Link to="/">
-            <button className="btn btn-primary">Voltar</button>
+            <button className="btn">Voltar</button>
           </Link>
         </div>
       </div>

@@ -21,3 +21,21 @@
   .movie-details {
     flex: 2; /* Os detalhes ocupam 2/3 do espaço disponível */
   }
+.btn{
+  margin-top: 5px;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Efeito de escala ao passar o mouse */
+  }
+}

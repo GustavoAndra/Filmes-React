@@ -107,7 +107,7 @@ export const ScrollToTop = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  transition: opacity 0.3s;
+  transition: opacity 1s;
   opacity: ${({ isVisible }) => (isVisible ? '1' : '0')};
 `;
 

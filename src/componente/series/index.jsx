@@ -125,7 +125,7 @@ const SeriesComponent = () => {
             </div>
             <div className="col-md-8">
               <div className="card-body">
-                <h5 className="card-title">Mistério Sombrio</h5>
+                <h2 className="card-title">Mistério Sombrio</h2>
                 <p className="card-text">
                   Entre em um mundo de enigmas e suspense com "Mistério Sombrio". Uma narrativa intrigante e personagens misteriosos irão mantê-lo cativado do começo ao fim.
                 </p>

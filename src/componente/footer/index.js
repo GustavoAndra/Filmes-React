@@ -2,8 +2,8 @@ import React from 'react';
 import './footer.css';
 
 const Footer = () => {
-  return (
-    <footer id="contatos">
+return (
+  <footer id="contatos">
     <div class="container-fluid">
       <div class="row">
         <div class="footer-col">
@@ -44,8 +44,8 @@ const Footer = () => {
         </div>
       </div>
     </div>
-</footer>
-  );
+  </footer>
+);
 };
 
 export default Footer;
