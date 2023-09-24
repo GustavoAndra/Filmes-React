@@ -17,7 +17,7 @@ function Home() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
-    arrows: false
+    arrows: true
   };
 
   const [movies, setMovies] = useState([]);
@@ -55,56 +55,61 @@ function Home() {
     movieChunks.push(movies.slice(i, i + chunkSize));
   }
 
+  // Títulos para os slides do carousel
+  const carouselTitles = [
+    "Favoritos da semana",
+    "Lançamentos Em Destaque",
+    "Assista Agora",
+  ];
+
   return (
     <Container>
-    <h1>Seja bem-vindo ao ReelMagic</h1>
-    <p>
-      Explore uma ampla variedade de filmes que atendem a todos os gostos e gêneros. De ação a comédia, de drama a aventura, temos algo para todos.
-    </p>
-    <ScrollToTop isVisible={showScrollToTop}>
-      <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
-    </ScrollToTop>
-    {loading ? (
-      <p>Carregando filmes...</p>
-    ) : (
-      <>
-        <h1>Favoritos da semana</h1> {/* Cabeçalho fora do loop */}
-        {movieChunks.map((chunk, index) => (
-          <MediaQuery key={index} maxWidth={768}>
-            {(matches) => (
-              <Slider
-                key={index}
-                {...carouselSettings}
-                slidesToShow={matches ? 1 : 4}
-              >
-                {chunk.map((movie) => (
-                  <Movie key={movie.id}>
-                    <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                    <div className="movie-info">
-                      <span>{movie.title}</span>
-                      <div className="icons">
-                        <p>
-                          <FaFlag className="icon" /> Salvar
-                        </p>
-                        <p className="star-rating">
-                        <FaStar className="star-icon" style={{ color: "yellow" }}/> Avaliação: <span style={{ color: "yellow", fontSize:'15px' }}>{movie.vote_average}</span>
-
-                        </p>
-                      </div>
-                    </div>
-                    <Link to={`/${movie.id}`}>
-                      <Btn>Detalhes</Btn>
-                    </Link>
-                  </Movie>
-                ))}
-              </Slider>
-            )}
-          </MediaQuery>
-        ))}
-      </>
-    )}
-  </Container>
-  
+      <h1>Seja bem-vindo ao ReelMagic</h1>
+   
+      <ScrollToTop isVisible={showScrollToTop}>
+        <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
+      </ScrollToTop>
+      {loading ? (
+        <p>Carregando filmes...</p>
+      ) : (
+        <>
+          {movieChunks.map((chunk, index) => (
+            <MediaQuery key={index} maxWidth={768}>
+              {(matches) => (
+                <div key={index}>
+                  <h2>{carouselTitles[index]}</h2> {/* Título do slide */}
+                  <Slider
+                    key={index}
+                    {...carouselSettings}
+                    slidesToShow={matches ? 1 : 4}
+                  >
+                    {chunk.map((movie) => (
+                      <Movie key={movie.id}>
+                        <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                        <div className="movie-info">
+                          <span>{movie.title}</span>
+                          <div className="icons">
+                            <p>
+                              <FaFlag className="icon" /> Salvar
+                            </p>
+                            <p className="star-rating">
+                              <FaStar className="star-icon" style={{ color: "yellow" }}/> Avaliação: <span style={{ color: "yellow", fontSize:'15px' }}>{movie.vote_average}</span>
+                            </p>
+                          </div>
+                        </div>
+                        <Link to={`/${movie.id}`}>
+                          <Btn>Detalhes</Btn>
+                        </Link>
+                      </Movie>
+                    ))}
+                  </Slider>
+                </div>
+              )}
+            </MediaQuery>
+          ))}
+        </>
+      )}
+    </Container>
   );
 }
 

@@ -1,0 +1,61 @@
+/* No seu arquivo "proposta.css" ou em um arquivo de estilo separado */
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+  color: #FFD700;
+  margin-bottom: 35px;
+}
+.subscription-card {
+  /* Estilos para o card de assinatura */
+  border: 1px solid #290ab1;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: 10px;
+}
+.subscription-card:hover{
+  transform: scale(1) translateY(20px);
+}
+h3 {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.old-price {
+  /* Estilos para o preço antigo (riscado) */
+  color: #999;
+  text-decoration: line-through; /* Adiciona um risco no preço antigo */
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.current-price {
+  /* Estilos para o preço atualizado */
+  color: #e50914; /* Vermelho para chamar atenção */
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+button {
+  background-color: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ff0000;
+}

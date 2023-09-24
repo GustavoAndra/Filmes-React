@@ -5,6 +5,8 @@ export const Container = styled.div`
   h1 {
     text-align: center;
     margin: 2rem 0;
+    color: #FFD700;
+    margin-bottom: 35px;
   }
   p {
     text-align: center;
@@ -42,6 +44,7 @@ export const Movie = styled.li`
   img {
     width: 100%;
     height: auto;
+    border-radius: 10px;
   }
 
   .movie-info {
