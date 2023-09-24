@@ -3,15 +3,6 @@
   padding: 0;
   overflow-x: hidden;
   }
-.App {
-  background-color: #ffffff;
-  color: #000000;
-}
-/* Classe para o tema escuro */
-.App.dark-mode {
-  background-color: #000000;
-  color: #ffffff;
-} 
 body {
   background-color: #000;
   color: white;
@@ -21,13 +12,3 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }/*Esse código não é meu, Roubei :)*/
-@keyframes efeito {
-0% {
-  transform: scale(0);
-  opacity: 0;
-}
-100% {
-  transform: scale(1);
-  opacity: 1;
-}
-}
