@@ -30,7 +30,6 @@ h3 {
   position: relative; /* Posição relativa para adicionar o brilho */
   animation: neon 1.5s ease-in-out infinite alternate; /* Animação de brilho */
 }
-
 /* Animação de brilho */
 @keyframes neon {
   0% {
@@ -54,7 +53,7 @@ h3 {
 
 .current-price {
   /* Estilos para o preço atualizado */
-  color: #e50914; /* Vermelho para chamar atenção */
+  color: #b53cf6; /* Vermelho para chamar atenção */
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 10px;
@@ -63,7 +62,6 @@ ul {
   list-style: none;
   padding: 0;
 }
-
 li {
   margin: 5px 0;
 }
@@ -77,7 +75,6 @@ button {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 button:hover {
   background-color: #ff0000;
 }

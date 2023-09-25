@@ -26,7 +26,6 @@ export const Movie = styled.li`
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  overflow: hidden;
   padding: 5px;
   margin: 1rem; /* Espaço entre os cards */
 
@@ -34,44 +33,36 @@ export const Movie = styled.li`
     transform: scale(1.05);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
   }
-
   .image-container {
     position: relative;
-    overflow: hidden;
     border-radius: 10px 10px 0 0;
   }
-
   img {
     width: 100%;
     height: auto;
     border-radius: 10px;
   }
-
   .movie-info {
     padding: 1rem;
     text-align: center;
   }
-
   span {
     font-size: 1rem; /* Reduza o tamanho da fonte */
     margin-bottom: 0.5rem; /* Reduza o espaçamento inferior */
     display: block;
   }
-
   .icons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 0.5rem; /* Reduza o espaçamento superior */
   }
-
   p {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
     font-size: 15px; /* Reduza o tamanho da fonte */
   }
-
   .icon {
     margin-right: 0.5rem; /* Reduza a margem direita */
   }
@@ -81,7 +72,6 @@ export const Movie = styled.li`
     padding: 1rem; /* Reduza o espaçamento do container */
   }
 `;
-
 
 export const Btn = styled.button`
   margin-top: 5px;
@@ -95,7 +85,6 @@ export const Btn = styled.button`
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
   transition: background-color 0.3s, transform 0.2s ease-in-out;
-
   &:hover {
     background-color: #0056b3;
     transform: scale(1.05); /* Efeito de escala ao passar o mouse */
@@ -123,7 +112,6 @@ export const ScrollToTopButton = styled.a`
   border-radius: 50%;
   text-decoration: none;
   cursor: pointer;
-
   &:hover {
     background-color: #fff;
   }
