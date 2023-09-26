@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+body{
+  overflow-x: hidden;
+}
   padding: 2rem;
   h1 {
     text-align: center;

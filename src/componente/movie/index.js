@@ -17,11 +17,11 @@ const Movie = () => {
       .then((data) => {
         const res = data.results;
         let filme = res.find((key) => {
-          // eslint-disable-next-line
+        
           return key.id == id;
         });
         setMovie(filme);
-      }); // eslint-disable-next-line
+      });
   }, []);
 
   return (
@@ -49,7 +49,6 @@ const Movie = () => {
       </div>
     </div>
     </section>
-   
   );
 };
 

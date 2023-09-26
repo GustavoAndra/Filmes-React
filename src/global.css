@@ -1,14 +1,15 @@
 * {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   }
 body {
   background-color: #000;
   color: white;
   -ms-overflow-style: none;
   scrollbar-width: none;    
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
   display: none;
+  overflow-x: hidden;
 }/*Esse código não é meu, Roubei :)*/
