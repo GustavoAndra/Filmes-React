@@ -49,9 +49,84 @@
   margin-right: 5px;
   font-size: 18px;
 }
+.search-box {
+  background-color: black; /* Fundo preto */
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
 
-@media (max-width: 768px) {
-  .movie-card {
-    flex: 0 0 calc(50% - 2rem);
+.Pesquisar {
+  display: flex;
+  align-items: center;
+}
+
+.InputPes {
+  border: none;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: black; /* Fundo preto */
+  color: #fff;
+}
+
+.BtnPes {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.BtnPes:hover {
+  background-color: #0056b3;
+}
+
+.BtnLimpar {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.BtnLimpar:hover {
+  background-color: #c82333;
+}
+.InputPes,
+.BtnPes,
+.BtnLimpar {
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Animação de fundo pulsante para a barra de pesquisa */
+.search-box:hover {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 }

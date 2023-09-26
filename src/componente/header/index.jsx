@@ -26,9 +26,9 @@ function Header() {
   };
 
   return (
-    <nav fixed-top className="nav">
+    <nav className="nav">
       <img className="nav-img" src={Logo} alt="Logo da ReelMagic" />
-      <SearchBar />
+     
       <ul className={active}>
         <li className="nav__item">
           <a href="/" className="nav__link" onClick={closeMenu}>
@@ -56,6 +56,7 @@ function Header() {
           </a>
         </li>
       </ul>
+       <SearchBar />
       <div onClick={navToggle} className={icon}>
         <div className="lineum"></div>
         <div className="linedois"></div>

@@ -10,7 +10,7 @@
     transform: scale(0.9) translateY(-20px);
     border-radius: 10px 10px 0 0;
     color: #ffa600;
-    background: #000;
+    background-color: #000;
     height: 400px; /* Altura fixa para os cards */
 }
 .card:hover {

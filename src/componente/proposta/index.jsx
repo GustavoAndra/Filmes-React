@@ -1,6 +1,7 @@
 import React from "react";
-import "./proposta.css";
+import "./proposta.css"; 
 
+// Array de objetos que representa informações sobre os planos de assinatura
 const subscriptions = [
   {
     id: 1,
@@ -27,32 +28,31 @@ const subscriptions = [
 
 function Proposta() {
   return (
-    <section id="planos">
-       <div className="proposta">
-      <h1>Super Promoção! Assine Nossos Planos Agora e Economize!</h1>
-      <div className="container-fluid">
-        <div className="row">
-          {subscriptions.map((subscription) => (
-            <div key={subscription.id} className="col-md-4">
-              <div className="subscription-card">
-                <h3>{subscription.name}</h3>
-                <p className="old-price">{subscription.oldPrice}</p>
-                <p className="current-price">{subscription.price}</p>
-                <ul>
-                  {subscription.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))}
-                </ul>
-                <button>Assinar</button>
+    <>
+      <section id="planos"> {/* Seção que engloba os planos */}
+        <h1>Super Promoção! Assine Nossos Planos Agora e Economize!</h1> 
+        <div className="container-fluid"> {/* Container Bootstrap */}
+          <div className="row"> {/* Linha Bootstrap */}
+            {subscriptions.map((subscription) => (
+              <div key={subscription.id} className="col-md-4"> {/* Coluna Bootstrap */}
+                <div className="subscription-card"> {/* Cartão de plano de assinatura */}
+                  <h3>{subscription.name}</h3> {/* Nome do plano */}
+                  <p className="old-price">{subscription.oldPrice}</p> {/* Preço antigo */}
+                  <p className="current-price">{subscription.price}</p> {/* Preço atual */}
+                  <ul>
+                    {subscription.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                  <button aria-label={`Assinar ${subscription.name}`}>Assinar</button> 
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </div>
-    </section>
-   
+      </section>
+    </>
   );
 }
 
-export default Proposta;
+export default Proposta; 

@@ -17,7 +17,7 @@ function Home() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
-    arrows: true
+    arrows: false,
   };
 
   const [movies, setMovies] = useState([]);
@@ -32,7 +32,6 @@ function Home() {
         setLoading(false);
       });
   }, [KEY]);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 100) {
@@ -110,7 +109,6 @@ function Home() {
         </>
       )}
       </section>
-     
     </Container>
   );
 }

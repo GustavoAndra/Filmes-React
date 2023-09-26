@@ -49,7 +49,7 @@ a {
   height: 0.2rem;
   margin: 0.4rem;
   background: #e6e4ff;
-  transition: 0.1s ease-in;
+  transition: 0.9s ease-in;
 }
 @media screen and (max-width: 768px) {
   a.nav__link{
@@ -65,14 +65,14 @@ a {
   .nav__menu {
     position: fixed;
     margin-top: 10px;
-    top: 15vh;
+    top: 17vh;
     right: 0;
     height: 100%; /* Defina a altura máxima desejada */
     width: 100%;
     background: #000;
     flex-direction: column;
     transform: translateX(100%);
-    transition: 0.5s ease-in;
+    transition: 1s ease-in;
     overflow-y: auto; 
   }
 }

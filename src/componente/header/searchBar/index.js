@@ -37,26 +37,25 @@ function Search() {
 
   return (
     <>
-      <header className="Header">
-      <div class="search-box"></div>
-        <form onSubmit={handleSearch} className="Pesquisar">
+      <div className="search-box bg-black rounded-pill p-2 d-flex align-items-center">
+        <form onSubmit={handleSearch} className="Pesquisar d-flex align-items-center">
           <input
             type="text"
             name="search"
             id="search"
             placeholder="Pesquisar..."
-            className="InputPes"
+            className="InputPes bg-black text-white border-0 rounded-pill"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
           />
-          <input type="submit" value="Pesquisar" className="BtnPes" />
+          <input type="submit" value="Pesquisar" className="BtnPes bg-primary text-white border-0 rounded-pill ml-2 px-4" />
           {showResults && (
-            <button onClick={handleClear} className="BtnLimpar">
+            <button onClick={handleClear} className="BtnLimpar bg-danger text-white border-0 rounded-circle ml-2">
               X
             </button>
           )}
         </form>
-      </header>
+      </div>
       {showResults && (
         <div className="resultMovie ">
           <h2 className="result">Resultados da sua Pesquisa:</h2>
