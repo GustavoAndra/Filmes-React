@@ -1,49 +1,67 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./movie.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Movie = () => {
-  // Obtém o parâmetro da URL usando useParams para saber qual filme exibir
   const { id } = useParams();
-
-  // URL base para as imagens dos filmes
   const imagePath = "https://image.tmdb.org/t/p/w500";
-
-  // Estado para armazenar as informações do filme
-  const [movie, setMovie] = useState([]);
-
-  // Chave da API, obtida de variável de ambiente
+  const [movie, setMovie] = useState({});
+  const [relatedMovies, setRelatedMovies] = useState([]);
+  const [trailerKey, setTrailerKey] = useState("");
   const KEY = process.env.REACT_APP_KEY;
 
-  // UseEffect para buscar as informações do filme quando o componente for montado
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}&language=pt-BR`
     )
       .then((response) => response.json())
       .then((data) => {
-        // Encontra o filme correspondente pelo ID
-        const res = data.results;
-        let filme = res.find((key) => {
-          return key.id == id;
-        });
+        setMovie(data);
+      })
+      .catch((err) => console.error(err));
+  }, [KEY, id]);
 
-        // Define as informações do filme no estado
-        setMovie(filme);
-      });
-  }, []);
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${KEY}&language=pt-BR&page=1`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setRelatedMovies(data.results);
+      })
+      .catch((err) => console.error(err));
+  }, [KEY, id]);
+
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${KEY}&language=pt-BR`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const trailer = data.results.find((video) => video.type === "Trailer");
+        if (trailer) {
+          setTrailerKey(trailer.key);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, [KEY, id]);
+
+  if (!movie) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <section id="botao">
       <div className="container mt-4">
         <div className="row">
           <div className="col-lg-4">
-            {/* Exibe a imagem do filme */}
             <img
               className="img-fluid"
               src={`${imagePath}${movie.poster_path}`}
-              alt="{movie.title}"
+              alt={movie.title}
             />
           </div>
           <div className="col-lg-6">
@@ -51,13 +69,39 @@ const Movie = () => {
             <h2 id="lancamento">Data de lançamento: {movie.release_date}</h2>
             <div className="descricao">
               <h4>Descrição: </h4>
-              {/* Exibe a descrição do filme */}
               <p className="movie-desc">{movie.overview}</p>
             </div>
-            {/* Link para retornar à página inicial */}
             <Link to="/">
-              <button className="btn">Voltar</button>
+              <button className="btn btn-primary">Voltar</button>
             </Link>
+            <h2 id="titulo-Relacionados">Filmes Relacionados:</h2>
+            <Slider dots={false} infinite={true} slidesToShow={4} slidesToScroll={1} className="related-movies-carousel">
+              {relatedMovies.map((relatedMovie) => (
+                <div key={relatedMovie.id} className="related-movie">
+                  <Link to={`/${relatedMovie.id}`}>
+                    <img
+                      src={`${imagePath}${relatedMovie.poster_path}`}
+                      alt={relatedMovie.title}
+                      className="img-fluid"
+                    />
+                    <p className="related-movie-title">{relatedMovie.title}</p>
+                  </Link>
+                </div>
+              ))}
+            </Slider>
+            {trailerKey && (
+              <div>
+                <h2>Trailer:</h2>
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${trailerKey}`}
+                  title="Trailer"
+                  frameBorder="0"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
           </div>
         </div>
       </div>
