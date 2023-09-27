@@ -49,7 +49,7 @@ a {
   height: 0.2rem;
   margin: 0.4rem;
   background: #e6e4ff;
-  transition: 0.9s ease-in;
+  transition: 0.3s ease-in;
 }
 @media screen and (max-width: 768px) {
   a.nav__link{
@@ -72,7 +72,7 @@ a {
     background: #000;
     flex-direction: column;
     transform: translateX(100%);
-    transition: 1s ease-in;
+    transition: 0.3s ease-in;
     overflow-y: auto; 
   }
 }

@@ -4,26 +4,36 @@ import Header from '../header/index';
 import { FaHeart, FaHeartBroken, FaStar } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import "./favorito.css";
 
 const Favorites = () => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
-  const [movies, setMovies] = useState([]);
+  const [movieDetails, setMovieDetails] = useState([]);
   const imagePath = 'https://image.tmdb.org/t/p/w500';
   const KEY = process.env.REACT_APP_KEY;
- 
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavoriteMovies(favorites);
+    fetchMovieDetails(favorites);
   }, []);
 
-  useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
-      .then((response) => response.json())
+  // Função para buscar detalhes dos filmes favoritos na API
+  const fetchMovieDetails = (favorites) => {
+    const promises = favorites.map((movieId) => {
+      return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=pt-BR`)
+        .then((response) => response.json())
+        .catch((error) => {
+          console.error('Erro ao buscar detalhes do filme:', error);
+          return null;
+        });
+    });
+
+    Promise.all(promises)
       .then((data) => {
-        setMovies(data.results);
+        setMovieDetails(data);
       });
-  }, [KEY]);
+  };
 
   // Função para verificar se um filme é favorito
   const isMovieFavorite = (movieId) => {
@@ -46,18 +56,18 @@ const Favorites = () => {
       notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
     }
   };
-  
 
   // Função para exibir notificações usando react-toastify
   const notify = (message) => {
     toast.info(message, {
       position: toast.POSITION.TOP_RIGHT,
       autoClose: 2000, // Fechar a notificação após 2 segundos
+      className: 'custom-toast-error', // Adicione a classe CSS personalizada aqui
     });
   };
+  
 
   return (
-   
     <div> 
       <Header/>
       <h1>Filmes Favoritos</h1>
@@ -66,35 +76,40 @@ const Favorites = () => {
         <p>Nenhum filme favorito encontrado.</p>
       ) : (
         <ul>
-          {favoriteMovies.map((movieId) => {
-            // Encontre o filme favorito na lista de filmes populares
-            const movie = movies.find((m) => m.id === movieId);
+          {movieDetails.map((movie) => {
             if (movie) {
               return (
                 <li key={movie.id}>
-                <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                <div className="movie-info">
-                  <div className="icons">
-                  {isMovieFavorite(movie.id) ? ( <FaHeartBroken onClick={() => toggleFavorite(movie.id)} className="icon desfavorited" /> ) : ( <FaHeart className="icon favorited" /> )}
-                    <p style={{ textAlign: 'center' }}>
-                      <FaStar
-                        className="star-icon"
-                        style={{
-                          color: "yellow",
-                          marginBottom: "7px",
-                          marginRight: "0.5rem",
-                          cursor: "pointer",
-                          transition: "color 0.3s ease",
-                        }}
-                      />
-                      <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
-                    </p>
+                 
+                
+                    <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                    <h2>{movie.title}</h2>
+                     <div className="movie-info">
+                    <div className="icons">
+                      {isMovieFavorite(movie.id) ? (
+                        <FaHeartBroken onClick={() => toggleFavorite(movie.id)} className="icon desfavorited" />
+                      ) : (
+                        <FaHeart className="icon favorited" />
+                      )}
+                      <p style={{ textAlign: 'center' }}>
+                        <FaStar
+                          className="star-icon"
+                          style={{
+                            color: "yellow",
+                            marginBottom: "7px",
+                            marginRight: "0.5rem",
+                            cursor: "pointer",
+                            transition: "color 0.3s ease",
+                          }}
+                        />
+                        <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <Link to={`/${movie.id}`}>
-                  <button id='#botao'>Detalhes</button>
-                </Link>
-              </li>
+                      <Link to={`/${movie.id}`}>
+                    <button id='#botao'>Detalhes</button>
+                  </Link>
+                </li>
               );
             } else {
               return null; // Se o filme não for encontrado, não renderize nada

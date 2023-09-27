@@ -17,7 +17,6 @@
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   padding: 20px;
-  margin-bottom: 1rem; /* Espaçamento inferior entre os cards */
   margin-bottom: 80px;
 }
 .movie-card:hover {
@@ -131,7 +130,7 @@
 /* Estilos para telas pequenas (até 768px) */
 @media (max-width: 768px) {
   .result {
-    margin-top: 15px;
+    margin-bottom: 180px;
   }
 
   .card {

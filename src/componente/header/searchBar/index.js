@@ -8,80 +8,85 @@ import "./search.css";
 
 function Search() {
   const imagePath = 'https://image.tmdb.org/t/p/w500';
-  const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showResults, setShowResults] = useState(false);
   const KEY = process.env.REACT_APP_KEY;
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-  useEffect(() => {
-    if (searchTerm) {
-      fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=pt-BR&query=${searchTerm}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setMovies(data.results);
-          setShowResults(true);
-        });
-    } else {
-      setShowResults(false);
-    }
-  }, [searchTerm, KEY]);
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-  };
-
-  const handleClear = () => {
-    setSearchTerm("");
-    setMovies([]);
-    setShowResults(false);
-  };
-
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavoriteMovies(favorites);
-  }, []);
-
-  useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
+ // Esta função useEffect é acionada sempre que 'searchTerm' ou 'KEY' é alterado.
+// Ela faz uma chamada à API para buscar filmes com base no termo de pesquisa ('searchTerm').
+// Se 'searchTerm' estiver vazio, os resultados não serão exibidos.
+useEffect(() => {
+  if (searchTerm) {
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&language=pt-BR&query=${searchTerm}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setMovies(data.results);
+        setShowResults(true);
       });
-  }, [KEY]);
+  } else {
+    setShowResults(false);
+  }
+}, [searchTerm, KEY]);
 
-  // Função para verificar se um filme é favorito
-  const isMovieFavorite = (movieId) => {
-    return favoriteMovies.includes(movieId);
-  };
-
-  // Função para alternar a marcação de um filme como favorito ou desfavorito
-  const toggleFavorite = (movieId) => {
-    if (isMovieFavorite(movieId)) {
-      const updatedFavorites = favoriteMovies.filter((favId) => favId !== movieId);
-      setFavoriteMovies(updatedFavorites);
-      // Atualize o localStorage com os filmes favoritos atualizados
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      notify('Filme desfavoritado com sucesso.');
-    } else {
-      const updatedFavorites = [...favoriteMovies, movieId];
-      setFavoriteMovies(updatedFavorites);
-      // Atualize o localStorage com os filmes favoritos atualizados
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
-    }
-  };
-
-  // Função para exibir notificações usando react-toastify
-  const notify = (message) => {
-    toast.info(message, {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000, // Fechar a notificação após 2 segundos
+// Esta função é chamada quando o formulário de pesquisa é enviado.
+// Ela impede o comportamento padrão do formulário para evitar que a página seja recarregada.
+const handleSearch = (event) => {
+  event.preventDefault();
+};
+const [movies, setMovies] = useState([]);
+// Esta função é chamada quando o botão "Limpar" é clicado.
+// Ela redefine o termo de pesquisa ('searchTerm'), limpa a lista de filmes e oculta os resultados.
+const handleClear = () => {
+  setSearchTerm("");
+  setMovies([]);
+  setShowResults(false);
+};
+useEffect(() => {
+  fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
+    .then((response) => response.json())
+    .then((data) => {
+      setMovies(data.results);
     });
-  };
+}, [KEY]);
 
+const notify = (message) => {
+  toast.success(message, {
+    position: toast.POSITION.TOP_RIGHT,
+    autoClose: 2000,
+  });
+};
+//Função para salvar em localhost
+const [favoriteMovies, setFavoriteMovies] = useState([]);
+const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+useEffect(() => {
+  // Busque os favoritos do localStorage quando o componente for montado
+  const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  setFavoriteMovies(storedFavorites);
+  console.log(localStorage.getItem("favorites"));
+}, []);
+
+const isMovieFavorite = (movieId) => {
+  return favoriteMovies.includes(movieId);
+};
+
+const toggleFavorite = (movieId) => {
+  if (isMovieFavorite(movieId)) {
+    const updatedFavorites = favoriteMovies.filter((favId) => favId !== movieId);
+    setFavoriteMovies(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    setShowSuccessMessage(true);
+    notify('Filme desfavoritado com sucesso.');
+  } else {
+    const updatedFavorites = [...favoriteMovies, movieId];
+    setFavoriteMovies(updatedFavorites);
+    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    setShowSuccessMessage(true);
+    notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
+  }
+};
   return (
     <>
       <ToastContainer />
@@ -119,10 +124,10 @@ function Search() {
               />
               <div className="card-body">
                 <div className="d-flex justify-content-between">
-                  <FaHeart
-                    onClick={() => toggleFavorite(movie.id)}
-                    className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`}
-                  />
+                <FaHeart
+                              onClick={() => toggleFavorite(movie.id)}
+                              className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`}
+                            />
                   <p className="card-text">
                     <FaStar
                       className="star-icon"
