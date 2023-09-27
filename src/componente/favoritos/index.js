@@ -66,59 +66,65 @@ const Favorites = () => {
     });
   };
   
-
   return (
-    <div> 
-      <Header/>
-      <h1>Filmes Favoritos</h1>
+    <div>
+      <Header />
+      <h1 id='titulo-favorito'>MY LIST :)</h1>
       <ToastContainer />
       {favoriteMovies.length === 0 ? (
         <p>Nenhum filme favorito encontrado.</p>
       ) : (
-        <ul>
+        <div className="row">
           {movieDetails.map((movie) => {
             if (movie) {
               return (
-                <li key={movie.id}>
-                 
-                
-                    <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                    <h2>{movie.title}</h2>
-                     <div className="movie-info">
-                    <div className="icons">
-                      {isMovieFavorite(movie.id) ? (
-                        <FaHeartBroken onClick={() => toggleFavorite(movie.id)} className="icon desfavorited" />
-                      ) : (
-                        <FaHeart className="icon favorited" />
-                      )}
-                      <p style={{ textAlign: 'center' }}>
-                        <FaStar
-                          className="star-icon"
-                          style={{
-                            color: "yellow",
-                            marginBottom: "7px",
-                            marginRight: "0.5rem",
-                            cursor: "pointer",
-                            transition: "color 0.3s ease",
-                          }}
-                        />
-                        <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
-                      </p>
+                <div key={movie.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                  <div className="card">
+                    <img
+                      src={`${imagePath}${movie.poster_path}`}
+                      alt={movie.title}
+                      className="card-img-top img-fluid"
+                    />
+                    <div className="card-body">
+                      <div className="d-flex justify-content-between">
+                        {isMovieFavorite(movie.id) ? (
+                          <FaHeartBroken
+                            onClick={() => toggleFavorite(movie.id)}
+                            className="icon desfavorited"
+                          />
+                        ) : (
+                          <FaHeart className="icon favorited" />
+                        )}
+                        <p className="card-text">
+                          <FaStar
+                            className="star-icon"
+                            style={{
+                              color: "yellow",
+                              marginBottom: "7px",
+                              marginRight: "0.5rem",
+                              cursor: "pointer",
+                              transition: "color 0.3s ease",
+                            }}
+                          />
+                          <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
+                        </p>
+                      </div>
+                      <Link to={`/${movie.id}`}>
+                        <button className="btn btn-primary btn-block mt-2">Detalhes</button>
+                      </Link>
                     </div>
                   </div>
-                      <Link to={`/${movie.id}`}>
-                    <button id='#botao'>Detalhes</button>
-                  </Link>
-                </li>
+                </div>
               );
             } else {
               return null; // Se o filme não for encontrado, não renderize nada
             }
           })}
-        </ul>
+        </div>
       )}
     </div>
   );
+  
 };
 
 export default Favorites;

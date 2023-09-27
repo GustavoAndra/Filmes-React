@@ -52,6 +52,9 @@ a {
   transition: 0.3s ease-in;
 }
 @media screen and (max-width: 768px) {
+  .nav-img{
+    display: none;
+  }
   a.nav__link{
     color: #f8d300;
     font-weight: 800;
@@ -65,7 +68,7 @@ a {
   .nav__menu {
     position: fixed;
     margin-top: 10px;
-    top: 17vh;
+    top: 15vh;
     right: 0;
     height: 100%; /* Defina a altura máxima desejada */
     width: 100%;

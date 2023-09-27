@@ -12,7 +12,7 @@ const Main = () => (
     <Header /> {/* Movido para dentro do componente Main */}
     <Home />
     <SeriesComponent />
-    <Proposta />
+    <Proposta/>
   </div>
 );
 
@@ -20,6 +20,7 @@ const App = () => {
   return (
     <div>
       <Routes>
+
         <Route path="/" element={<Main />} />
         <Route path="/:id" element={<Movie />} />
         <Route path="/favorites" element={<Favoritos />} />
