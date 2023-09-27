@@ -35,6 +35,11 @@ function Header() {
             Home
           </a>
         </li>
+          <li className="nav__item">
+          <a href="/favorites" className="nav__link" onClick={closeMenu}>
+            Minha Lista
+          </a>
+        </li>
         <li className="nav__item">
           <a href="#filmes" className="nav__link" onClick={closeMenu}>
             Filmes

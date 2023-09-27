@@ -82,14 +82,14 @@ export const Btn = styled.button`
   border: none;
   border-radius: 5px;
   color: #fff;
-  background-color: #007bff;
+  background-color:#b53cf6;
   font-weight: bold;
   font-size: 1.5rem;
   cursor: pointer;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra suave */
   transition: background-color 0.3s, transform 0.2s ease-in-out;
   &:hover {
-    background-color: #0056b3;
+    background-color: #F00;
     transform: scale(1.05); /* Efeito de escala ao passar o mouse */
   }
 `;

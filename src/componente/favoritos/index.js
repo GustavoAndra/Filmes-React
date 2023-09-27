@@ -1,0 +1,106 @@
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaHeart, FaHeartBroken, FaStar } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Favorites = () => {
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const imagePath = 'https://image.tmdb.org/t/p/w500';
+  const KEY = process.env.REACT_APP_KEY;
+ 
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavoriteMovies(favorites);
+  }, []);
+
+  useEffect(() => {
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data.results);
+      });
+  }, [KEY]);
+
+  // Função para verificar se um filme é favorito
+  const isMovieFavorite = (movieId) => {
+    return favoriteMovies.includes(movieId);
+  };
+
+  // Função para alternar a marcação de um filme como favorito ou desfavorito
+  const toggleFavorite = (movieId) => {
+    if (isMovieFavorite(movieId)) {
+      const updatedFavorites = favoriteMovies.filter((favId) => favId !== movieId);
+      setFavoriteMovies(updatedFavorites);
+      // Atualize o localStorage com os filmes favoritos atualizados
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      notify('Filme desfavoritado com sucesso.');
+    } else {
+      const updatedFavorites = [...favoriteMovies, movieId];
+      setFavoriteMovies(updatedFavorites);
+      // Atualize o localStorage com os filmes favoritos atualizados
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
+    }
+  };
+  
+
+  // Função para exibir notificações usando react-toastify
+  const notify = (message) => {
+    toast.info(message, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000, // Fechar a notificação após 2 segundos
+    });
+  };
+
+  return (
+    <div>
+      <h1>Filmes Favoritos</h1>
+      <ToastContainer />
+      {favoriteMovies.length === 0 ? (
+        <p>Nenhum filme favorito encontrado.</p>
+      ) : (
+        <ul>
+          {favoriteMovies.map((movieId) => {
+            // Encontre o filme favorito na lista de filmes populares
+            const movie = movies.find((m) => m.id === movieId);
+            if (movie) {
+              return (
+                <li key={movie.id}>
+                  <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                  <div className="movie-info">
+                    <div className="icons">
+                      <button onClick={() => toggleFavorite(movie.id)}>
+                        {isMovieFavorite(movie.id) ? (
+                          <FaHeartBroken className="icon desfavorited" />
+                        ) : (
+                          <FaHeart className="icon favorited" />
+                        )}
+                      </button>
+                      <p>
+                        <FaStar
+                          className="star-icon"
+                          style={{ color: 'yellow', marginBottom: '7px', marginRight: '0.5rem' }}
+                        />
+                        <span style={{ color: 'yellow', fontSize: '15px' }}>{movie.vote_average}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <Link to={`/${movie.id}`}>
+                    <button>Detalhes</button>
+                  </Link>
+                </li>
+              );
+            } else {
+              return null; // Se o filme não for encontrado, não renderize nada
+            }
+          })}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default Favorites;

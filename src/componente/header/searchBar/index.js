@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons"; 
 import { FaFlag, FaStar } from 'react-icons/fa';
 import "./search.css";
 
@@ -44,14 +46,14 @@ function Search() {
             name="search"
             id="search"
             placeholder="Pesquisar..."
-            className="InputPes bg-black text-white border-0 rounded-pill"
+            className="InputPes bg-black text-white border-0 rounded-pill" 
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
           />
-          <input type="submit" value="Pesquisar" className="BtnPes bg-primary text-white border-0 rounded-pill ml-2 px-4" />
+          <input type="submit" value="Pesquisar" style={{ backgroundColor: "#b53cf6" }} className="BtnPes  border-0 rounded-pill ml-2 px-4" />
           {showResults && (
             <button onClick={handleClear} className="BtnLimpar bg-danger text-white border-0 rounded-circle ml-2">
-              X
+                  <FontAwesomeIcon icon={faTrash} /> 
             </button>
           )}
         </form>

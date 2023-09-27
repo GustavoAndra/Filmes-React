@@ -11,29 +11,24 @@
     flex: 1; /* A imagem ocupa 1/3 do espaço disponível */
     margin-right: 20px; /* Espaço à direita da imagem */
   }
-
   .img-fluid{
     max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
     border-radius: 15px;
     align-items: center;
   }
-  
   .movie-details {
     flex: 2; /* Os detalhes ocupam 2/3 do espaço disponível */
   }
   .related-movies-carousel {
     margin-top: 20px;
   }
-  
   .related-movie {
     margin: 0 10px;
     text-align: center;
   }
-  
   .related-movie img {
     width: 100%;
   }
-  
   .related-movie-title {
     margin-top: 10px;
     font-size: 14px;
@@ -47,7 +42,7 @@
   border: none;
   border-radius: 5px;
   color: #fff;
-  background-color: #007bff;
+  background-color: #b53cf6;
   font-weight: bold;
   font-size: 1.6rem;
   cursor: pointer;
@@ -55,7 +50,7 @@
   transition: background-color 0.3s, transform 0.2s ease-in-out;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #f00;
     transform: scale(1.05); /* Efeito de escala ao passar o mouse */
   }
 }

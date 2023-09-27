@@ -1,4 +1,3 @@
-/* Estilização dos cards de filmes */
 .resultMovie {
   display: flex;
   flex-wrap: wrap;
@@ -7,7 +6,6 @@
   background-color: #000;
   width: 100%; 
 }
-
 .card {
   flex: 0 0 calc(33.333% - 2rem);
   background-color: #fff; /* Cor de fundo branca */
@@ -18,7 +16,6 @@
   padding: 20px;
   margin-bottom: 1rem; /* Espaçamento inferior entre os cards */
 }
-
 .movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
@@ -28,22 +25,18 @@
   height: auto;
   border-radius: 15px; /* Arredondamento das bordas da imagem */
 }
-
 .movie-info {
   margin-top: 10px;
 }
-
 .icons p {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
-
 .icon {
-  color: #007BFF;
+  color: #f00;
   margin-right: 5px;
 }
-
 .star-icon {
   color: yellow;
   margin-right: 5px;
@@ -57,12 +50,10 @@
   display: flex;
   align-items: center;
 }
-
 .Pesquisar {
   display: flex;
   align-items: center;
 }
-
 .InputPes {
   border: none;
   outline: none;
@@ -73,9 +64,8 @@
   background-color: black; /* Fundo preto */
   color: #fff;
 }
-
 .BtnPes {
-  background-color: #007bff;
+  background-color: #b53cf6;
   color: #fff;
   border: none;
   border-top-right-radius: 20px;
@@ -85,11 +75,9 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-
 .BtnPes:hover {
-  background-color: #0056b3;
+  background-color: #b53cf6;
 }
-
 .BtnLimpar {
   background-color: #dc3545;
   color: #fff;
@@ -101,7 +89,6 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-
 .BtnLimpar:hover {
   background-color: #c82333;
 }
@@ -110,12 +97,9 @@
 .BtnLimpar {
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
-
-/* Animação de fundo pulsante para a barra de pesquisa */
 .search-box:hover {
   animation: pulse 1s infinite;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1);

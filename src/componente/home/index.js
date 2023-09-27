@@ -5,7 +5,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Container, Movie, Btn, ScrollToTop, ScrollToTopButton } from './home';
 import { Link } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
-import { FaFlag, FaStar } from 'react-icons/fa';
+import { FaHeart, FaStar } from 'react-icons/fa';
+import { toast, ToastContainer } from 'react-toastify';
 
 function Home() {
   const imagePath = 'https://image.tmdb.org/t/p/w500';
@@ -19,10 +20,11 @@ function Home() {
     autoplaySpeed: 6000,
     arrows: false,
   };
-
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // Adicione essa linha
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=pt-BR`)
@@ -32,6 +34,7 @@ function Home() {
         setLoading(false);
       });
   }, [KEY]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 100) {
@@ -61,53 +64,85 @@ function Home() {
     "Assista Agora",
   ];
 
+  const isMovieFavorite = (movieId) => {
+    return favoriteMovies.includes(movieId);
+  };
+
+  const toggleFavorite = (movieId) => {
+    if (isMovieFavorite(movieId)) {
+      const updatedFavorites = favoriteMovies.filter((favId) => favId !== movieId);
+      setFavoriteMovies(updatedFavorites);
+      // Atualize o localStorage com os filmes favoritos atualizados
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setShowSuccessMessage(true); // Exiba a mensagem de sucesso
+      notify('Filme desfavoritado com sucesso.');
+    } else {
+      const updatedFavorites = [...favoriteMovies, movieId];
+      setFavoriteMovies(updatedFavorites);
+      // Atualize o localStorage com os filmes favoritos atualizados
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+      setShowSuccessMessage(true); // Exiba a mensagem de sucesso
+      notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
+    }
+  };
+
+  const notify = (message) => {
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 2000, // Fechar a notificação após 2 segundos
+    });
+  };
+
   return (
+  
     <Container>
+        <ToastContainer/>
       <section id='filmes'>
-         <h1>Seja bem-vindo ao ReelMagic</h1>
-   
-      <ScrollToTop isVisible={showScrollToTop}>
-        <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
-      </ScrollToTop>
-      {loading ? (
-        <p>Carregando filmes...</p>
-      ) : (
-        <>
-          {movieChunks.map((chunk, index) => (
-            <MediaQuery key={index} maxWidth={768}>
-              {(matches) => (
-                <div key={index}>
-                  <h2>{carouselTitles[index]}</h2> {/* Título do slide */}
-                  <Slider
-                    key={index}
-                    {...carouselSettings}
-                    slidesToShow={matches ? 1 : 4}
-                  >
-                    {chunk.map((movie) => (
-                      <Movie key={movie.id}>
-                        <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                        <div className="movie-info">
-                          <div className="icons">
-                            <p>
-                              <FaFlag className="icon" /> Salvar
-                            </p>
-                            <p >
-                              <FaStar className="star-icon" style={{ color: "yellow",marginBottom: "7px", marginRight: "0.5rem" }}/><span style={{ color: "yellow", fontSize:'15px' }}>{movie.vote_average}</span>
-                            </p>
+        <h1>Seja bem-vindo ao ReelMagic</h1>
+
+        <ScrollToTop isVisible={showScrollToTop}>
+          <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
+        </ScrollToTop>
+        {loading ? (
+          <p>Carregando filmes...</p>
+        ) : (
+          <>
+            {movieChunks.map((chunk, index) => (
+              <MediaQuery key={index} maxWidth={768}>
+                {(matches) => (
+                  <div key={index}>
+                    <h2>{carouselTitles[index]}</h2> {/* Título do slide */}
+                    <Slider
+                      key={index}
+                      {...carouselSettings}
+                      slidesToShow={matches ? 1 : 4}
+                    >
+                      {chunk.map((movie) => (
+                        <Movie key={movie.id}>
+                          <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                          <div className="movie-info">
+                            <div className="icons">
+                              <button onClick={() => toggleFavorite(movie.id)}>
+                                <FaHeart className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`} />
+                              </button>
+                              <p>
+                                <FaStar className="star-icon" style={{ color: "yellow", marginBottom: "7px", marginRight: "0.5rem" }} />
+                                <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        <Link to={`/${movie.id}`}>
-                          <Btn id='#botao'>Detalhes</Btn>
-                        </Link>
-                      </Movie>
-                    ))}
-                  </Slider>
-                </div>
-              )}
-            </MediaQuery>
-          ))}
-        </>
-      )}
+                          <Link to={`/${movie.id}`}>
+                            <Btn id='#botao'>Detalhes</Btn>
+                          </Link>
+                        </Movie>
+                      ))}
+                    </Slider>
+                  </div>
+                )}
+              </MediaQuery>
+            ))}
+          </>
+        )}
       </section>
     </Container>
   );
