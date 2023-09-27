@@ -13,7 +13,8 @@
   }
   .img-fluid{
     max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
-    border-radius: 15px;
+    height: auto;
+    border-radius: 5px;
     align-items: center;
   }
   .movie-details {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./movie.css";
 import Slider from "react-slick";
@@ -55,7 +55,7 @@ const Movie = () => {
 
   return (
     <section id="botao">
-      <div className="container mt-4">
+      <div className="container-fluid mt-4">
         <div className="row">
           <div className="col-lg-4">
             <img
@@ -68,14 +68,37 @@ const Movie = () => {
             <h1>{movie.title}</h1>
             <h2 id="lancamento">Data de lançamento: {movie.release_date}</h2>
             <div className="descricao">
-              <h4>Descrição: </h4>
+              <h4>Descrição:</h4>
               <p className="movie-desc">{movie.overview}</p>
+            </div>
+            <div className="row">
+              <div className="col-md-6">
+                <h4>Gênero:</h4>
+                <p>
+                  {movie.genres?.map((genre, index) => (
+                    <span key={genre.id}>
+                      {genre.name}
+                      {index !== movie.genres.length - 1 && ", "}
+                    </span>
+                  ))}
+                </p>
+              </div>
+              <div className="col-md-6">
+                <h4>Duração:</h4>
+                <p>{movie.runtime} minutos</p>
+              </div>
             </div>
             <Link to="/">
               <button className="btn btn-primary">Voltar</button>
             </Link>
             <h2 id="titulo-Relacionados">Filmes Relacionados:</h2>
-            <Slider dots={false} infinite={true} slidesToShow={4} slidesToScroll={1} className="related-movies-carousel">
+            <Slider
+              dots={false}
+              infinite={true}
+              slidesToShow={4}
+              slidesToScroll={1}
+              className="related-movies-carousel"
+            >
               {relatedMovies.map((relatedMovie) => (
                 <div key={relatedMovie.id} className="related-movie">
                   <Link to={`/${relatedMovie.id}`}>
@@ -92,14 +115,17 @@ const Movie = () => {
             {trailerKey && (
               <div>
                 <h2>Trailer:</h2>
-                <iframe
-                  width="560"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${trailerKey}`}
-                  title="Trailer"
-                  frameBorder="0"
-                  allowFullScreen
-                ></iframe>
+                <div className="embed-responsive embed-responsive-16by9">
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${trailerKey}`}
+                    title="Trailer"
+                    frameBorder="0"
+                    allowFullScreen
+                    className="embed-responsive-item"
+                  ></iframe>
+                </div>
               </div>
             )}
           </div>
