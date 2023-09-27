@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../header/index';
 import { FaHeart, FaHeartBroken, FaStar } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -56,7 +57,9 @@ const Favorites = () => {
   };
 
   return (
-    <div>
+   
+    <div> 
+      <Header/>
       <h1>Filmes Favoritos</h1>
       <ToastContainer />
       {favoriteMovies.length === 0 ? (
@@ -69,29 +72,29 @@ const Favorites = () => {
             if (movie) {
               return (
                 <li key={movie.id}>
-                  <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                  <div className="movie-info">
-                    <div className="icons">
-                      <button onClick={() => toggleFavorite(movie.id)}>
-                        {isMovieFavorite(movie.id) ? (
-                          <FaHeartBroken className="icon desfavorited" />
-                        ) : (
-                          <FaHeart className="icon favorited" />
-                        )}
-                      </button>
-                      <p>
-                        <FaStar
-                          className="star-icon"
-                          style={{ color: 'yellow', marginBottom: '7px', marginRight: '0.5rem' }}
-                        />
-                        <span style={{ color: 'yellow', fontSize: '15px' }}>{movie.vote_average}</span>
-                      </p>
-                    </div>
+                <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                <div className="movie-info">
+                  <div className="icons">
+                  {isMovieFavorite(movie.id) ? ( <FaHeartBroken onClick={() => toggleFavorite(movie.id)} className="icon desfavorited" /> ) : ( <FaHeart className="icon favorited" /> )}
+                    <p style={{ textAlign: 'center' }}>
+                      <FaStar
+                        className="star-icon"
+                        style={{
+                          color: "yellow",
+                          marginBottom: "7px",
+                          marginRight: "0.5rem",
+                          cursor: "pointer",
+                          transition: "color 0.3s ease",
+                        }}
+                      />
+                      <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
+                    </p>
                   </div>
-                  <Link to={`/${movie.id}`}>
-                    <button>Detalhes</button>
-                  </Link>
-                </li>
+                </div>
+                <Link to={`/${movie.id}`}>
+                  <button id='#botao'>Detalhes</button>
+                </Link>
+              </li>
               );
             } else {
               return null; // Se o filme não for encontrado, não renderize nada

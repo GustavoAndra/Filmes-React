@@ -1,3 +1,6 @@
+.result{
+  margin-top: 45px;
+}
 .resultMovie {
   display: flex;
   flex-wrap: wrap;
@@ -8,21 +11,22 @@
 }
 .card {
   flex: 0 0 calc(33.333% - 2rem);
-  background-color: #fff; /* Cor de fundo branca */
-  border-radius: 10px;
+  background-color: #000; /* Cor de fundo branca */
+  border-radius: 15px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Sutil sombra */
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   padding: 20px;
   margin-bottom: 1rem; /* Espaçamento inferior entre os cards */
+  margin-bottom: 80px;
 }
 .movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
 }
-.movie-card img {
+.movie-card  {
   max-width: 100%;
-  height: auto;
+  height: 450px;
   border-radius: 15px; /* Arredondamento das bordas da imagem */
 }
 .movie-info {
@@ -122,5 +126,37 @@
   100% {
     transform: scale(1);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+/* Estilos para telas pequenas (até 768px) */
+@media (max-width: 768px) {
+  .result {
+    margin-top: 15px;
+  }
+
+  .card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+/* Estilos para telas médias (de 769px a 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .result {
+    margin-top: 30px;
+  }
+
+  .card {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+
+/* Estilos para telas grandes (acima de 992px) */
+@media (min-width: 993px) {
+  .result {
+    margin-top: 45px;
+  }
+
+  .card {
+    flex: 0 0 calc(25% - 1rem);
   }
 }
