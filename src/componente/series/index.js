@@ -25,7 +25,7 @@ const SeriesComponent = () => {
   return (
     <section id="series">
     <h1 id="serie">Queridinhos do Momento</h1>
-    <div className="container-fluid">
+    <div className="container-fluid black-bg">
  <Slider {...carouselSettings}>
       {/* Primeiro Slide */}
       <div className={`col-${isSmallScreen ? 'sm' : 'sm'}-6`}>

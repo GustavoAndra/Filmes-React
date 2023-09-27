@@ -5,8 +5,11 @@ import Movie from "./componente/movie/index";
 import SeriesComponent from "./componente/series/index";
 import Proposta from "./componente/proposta/index";
 import Favoritos from './componente/favoritos/index';
+import Header from './componente/header/index';
+
 const Main = () => (
   <div>
+    <Header /> {/* Movido para dentro do componente Main */}
     <Home />
     <SeriesComponent />
     <Proposta />
@@ -19,7 +22,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/:id" element={<Movie />} />
-        <Route path="/favorites" element={<Favoritos />} /> {/* Adicione esta rota */}
+        <Route path="/favorites" element={<Favoritos />} />
       </Routes>
     </div>
   );

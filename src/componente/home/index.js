@@ -20,7 +20,7 @@ function Home() {
     autoplaySpeed: 6000,
     arrows: false,
   };
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false); // Adicione essa linha
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
@@ -57,7 +57,6 @@ function Home() {
     movieChunks.push(movies.slice(i, i + chunkSize));
   }
 
-  // Títulos para os slides do carousel
   const carouselTitles = [
     "Favoritos da semana",
     "Lançamentos Em Destaque",
@@ -72,16 +71,14 @@ function Home() {
     if (isMovieFavorite(movieId)) {
       const updatedFavorites = favoriteMovies.filter((favId) => favId !== movieId);
       setFavoriteMovies(updatedFavorites);
-      // Atualize o localStorage com os filmes favoritos atualizados
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      setShowSuccessMessage(true); // Exiba a mensagem de sucesso
+      setShowSuccessMessage(true);
       notify('Filme desfavoritado com sucesso.');
     } else {
       const updatedFavorites = [...favoriteMovies, movieId];
       setFavoriteMovies(updatedFavorites);
-      // Atualize o localStorage com os filmes favoritos atualizados
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      setShowSuccessMessage(true); // Exiba a mensagem de sucesso
+      setShowSuccessMessage(true);
       notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
     }
   };
@@ -89,62 +86,71 @@ function Home() {
   const notify = (message) => {
     toast.success(message, {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000, // Fechar a notificação após 2 segundos
+      autoClose: 2000,
     });
   };
 
   return (
-  
     <Container>
-        <ToastContainer/>
-      <section id='filmes'>
-        <h1>Seja bem-vindo ao ReelMagic</h1>
-
-        <ScrollToTop isVisible={showScrollToTop}>
-          <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
-        </ScrollToTop>
-        {loading ? (
-          <p>Carregando filmes...</p>
-        ) : (
-          <>
-            {movieChunks.map((chunk, index) => (
-              <MediaQuery key={index} maxWidth={768}>
-                {(matches) => (
-                  <div key={index}>
-                    <h2>{carouselTitles[index]}</h2> {/* Título do slide */}
-                    <Slider
-                      key={index}
-                      {...carouselSettings}
-                      slidesToShow={matches ? 1 : 4}
-                    >
-                      {chunk.map((movie) => (
-                        <Movie key={movie.id}>
-                          <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
-                          <div className="movie-info">
-                            <div className="icons">
-                              <button onClick={() => toggleFavorite(movie.id)}>
-                                <FaHeart className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`} />
-                              </button>
-                              <p>
-                                <FaStar className="star-icon" style={{ color: "yellow", marginBottom: "7px", marginRight: "0.5rem" }} />
-                                <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
-                              </p>
-                            </div>
+    <ToastContainer />
+    <section id='filmes'>
+      <h1>Seja bem-vindo ao ReelMagic</h1>
+      <ScrollToTop isVisible={showScrollToTop}>
+        <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
+      </ScrollToTop>
+      {loading ? (
+        <p>Carregando filmes...</p>
+      ) : (
+        <>
+          {movieChunks.map((chunk, index) => (
+            <MediaQuery key={index} maxWidth={768}>
+              {(matches) => (
+                <div key={index}>
+                  <h2>{carouselTitles[index]}</h2>
+                  <Slider
+                    key={index}
+                    {...carouselSettings}
+                    slidesToShow={matches ? 1 : 4}
+                  >
+                    {chunk.map((movie) => (
+                      <Movie key={movie.id}>
+                        <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
+                        <div className="movie-info">
+                          <div className="icons">
+                            <FaHeart
+                              onClick={() => toggleFavorite(movie.id)}
+                              className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`}
+                            />
+                            <p style={{ textAlign: 'center' }}>
+                              <FaStar
+                                className="star-icon"
+                                style={{
+                                  color: "yellow",
+                                  marginBottom: "7px",
+                                  marginRight: "0.5rem",
+                                  cursor: "pointer",
+                                  transition: "color 0.3s ease",
+                                }}
+                              />
+                              <span style={{ color: "yellow", fontSize: '15px' }}>{movie.vote_average}</span>
+                            </p>
                           </div>
-                          <Link to={`/${movie.id}`}>
-                            <Btn id='#botao'>Detalhes</Btn>
-                          </Link>
-                        </Movie>
-                      ))}
-                    </Slider>
-                  </div>
-                )}
-              </MediaQuery>
-            ))}
-          </>
-        )}
-      </section>
-    </Container>
+                        </div>
+                        <Link to={`/${movie.id}`}>
+                          <Btn id='#botao'>Detalhes</Btn>
+                        </Link>
+                      </Movie>
+                    ))}
+                  </Slider>
+                </div>
+              )}
+            </MediaQuery>
+          ))}
+        </>
+      )}
+    </section>
+  </Container>
+  
   );
 }
 

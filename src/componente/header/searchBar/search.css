@@ -36,12 +36,22 @@
 .icon {
   color: #f00;
   margin-right: 5px;
+  background-color: none;
 }
 .star-icon {
   color: yellow;
   margin-right: 5px;
   font-size: 18px;
+} .icon {
+  /* Estilos padrão do ícone do coração */
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Adicione uma transição suave ao transform */
 }
+
+.favorited {
+  transform: scale(1.2); /* Um exemplo de transformação para o efeito de clique */
+}
+
 .search-box {
   background-color: black; /* Fundo preto */
   border-radius: 20px;
