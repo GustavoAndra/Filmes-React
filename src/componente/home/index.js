@@ -20,7 +20,7 @@ function Home() {
     autoplaySpeed: 6000,
     arrows: false,
   };
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [, setShowSuccessMessage] = useState(false);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
@@ -117,10 +117,10 @@ function Home() {
                         <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
                         <div className="movie-info">
                           <div className="icons">
-                            <FaHeart
+                           <p>FAVORITAR <FaHeart
                               onClick={() => toggleFavorite(movie.id)}
                               className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`}
-                            />
+                            /></p>
                             <p style={{ textAlign: 'center' }}>
                               <FaStar
                                 className="star-icon"
