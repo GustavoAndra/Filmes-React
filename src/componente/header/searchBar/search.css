@@ -1,3 +1,6 @@
+*{
+  scrollbar-width: none; 
+}
 .result {
   margin-top: 45px;
 }
