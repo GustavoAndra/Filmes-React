@@ -1,6 +1,12 @@
 #lancamento{
   font-size: medium;
 }
+p{
+  font-size: 15px;
+}
+ h4{
+  color: #FFD700;
+}
 .movie-container{
     display: flex;
     align-items: flex-start; /* Alinha os elementos verticalmente ao topo */

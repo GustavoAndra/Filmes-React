@@ -68,7 +68,7 @@ const Movie = () => {
             <h1>{movie.title}</h1>
             <h2 id="lancamento">Data de lançamento: {movie.release_date}</h2>
             <div className="descricao">
-              <h4>Descrição:</h4>
+              <h4 fon>Descrição:</h4>
               <p className="movie-desc">{movie.overview}</p>
             </div>
             <div className="row">
@@ -128,7 +128,6 @@ const Movie = () => {
                   ></iframe>
                 </div> {/*Fim do container*/}
                 </div>
-               
               </div>
             )}
           </div>

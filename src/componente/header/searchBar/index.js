@@ -71,9 +71,6 @@ function Search() {
                     <div className="card-body">
                       <div className="d-flex justify-content-between">
                         <p className="card-text">
-                          <FaFlag className="icon" /> Salvar
-                        </p>
-                        <p className="card-text">
                           <FaStar
                             className="star-icon"
                             style={{
