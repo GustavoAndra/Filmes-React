@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../header/index';
 import { FaHeart, FaHeartBroken, FaStar } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
+import Header from '../header';
 import 'react-toastify/dist/ReactToastify.css';
 import "./favorito.css";
 
@@ -12,29 +12,36 @@ const Favorites = () => {
   const imagePath = 'https://image.tmdb.org/t/p/w500';
   const KEY = process.env.REACT_APP_KEY;
 
-
-  // Definir fetchMovieDetails como uma função useCallback
-  const fetchMovieDetails = ((favorites) => {
+  // Função para buscar detalhes dos filmes favoritos na API
+  const fetchFavoriteMovieDetails = (favorites) => {
     const promises = favorites.map((movieId) => {
-      return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=pt-BR`)
+      const endpoint = `movie/${movieId}?api_key=${KEY}&language=pt-BR`;
+
+      return fetch(`https://api.themoviedb.org/3/${endpoint}`)
         .then((response) => response.json())
+        .then((data) => data)
         .catch((error) => {
-          console.error('Erro ao buscar detalhes do filme:', error);
+          console.error("Erro ao buscar detalhes do filme:", error);
           return null;
         });
     });
 
-    Promise.all(promises)
-      .then((data) => {
-        setMovieDetails(data);
-      });
-  }, [KEY]);
+    Promise.all(promises).then((favoriteMoviesData) => {
+      // Filtrar os filmes que não retornaram null
+      const filteredFavoriteMovies = favoriteMoviesData.filter(
+        (movie) => movie !== null
+      );
+      setMovieDetails(filteredFavoriteMovies);
+    });
+  };
 
   useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavoriteMovies(favorites);
-    fetchMovieDetails(favorites);
-  }, [fetchMovieDetails]); // Adicionando fetchMovieDetails ao array de dependências
+
+    // Chame a função para buscar detalhes dos filmes favoritos
+    fetchFavoriteMovieDetails(favorites);
+  }, []);
 
   // Função para verificar se um filme é favorito
   const isMovieFavorite = (movieId) => {
@@ -66,7 +73,7 @@ const Favorites = () => {
       className: 'custom-toast-error', // Adicione a classe CSS personalizada aqui
     });
   };
-  
+
   return (
     <div>
       <Header />

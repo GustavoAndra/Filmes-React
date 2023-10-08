@@ -141,6 +141,12 @@ const Search = () => {
                         Detalhes
                       </button>
                     </Link>
+                    <button
+                      onClick={() => toggleFavorite(movie.id)}
+                      className="btn btn-danger btn-block mt-2"
+                    >
+                      Excluir
+                    </button>
                   </div>
                 </div>
               </div>

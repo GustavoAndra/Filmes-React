@@ -61,7 +61,7 @@ function Header() {
           </a>
         </li>
       </ul>
-       <SearchBar />
+     
       <div onClick={navToggle} className={icon}>
         <div className="lineum"></div>
         <div className="linedois"></div>

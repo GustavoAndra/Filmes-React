@@ -20,9 +20,9 @@ const App = () => {
   return (
     <div>
       <Routes>
+        <Route path="/favoritos" element={<Favorites />}/>
         <Route path="/" element={<Main />} />
         <Route path="/:id" element={<Movie/>} />
-        <Route path="/favoritos" element={<Favorites />}/>
       </Routes>
     </div>
   );
