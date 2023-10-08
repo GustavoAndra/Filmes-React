@@ -1,51 +1,110 @@
-.result{
+.result {
   margin-top: 45px;
 }
+
 .resultMovie {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   z-index: 1;
   background-color: #000;
-  width: 100%; 
+  width: 100%;
 }
+
 .card {
-  flex: 0 0 calc(33.333% - 2rem);
-  background-color: #000; /* Cor de fundo branca */
-  border-radius: 15px;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Sutil sombra */
+  background-color: #000;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
-  padding: 20px;
-  margin-bottom: 80px;
+  padding: 5px;
+  margin: 1rem; /* Espaço entre os cards */
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .image-container {
+    position: relative;
+    border-radius: 10px 10px 0 0;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .movie-info {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  span {
+    font-size: 1rem; /* Reduza o tamanho da fonte */
+    margin-bottom: 0.5rem; /* Reduza o espaçamento inferior */
+    display: block;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem; /* Reduza o espaçamento superior */
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 15px; /* Reduza o tamanho da fonte */
+  }
+
+  .icon {
+    margin-right: 0.5rem; /* Reduza a margem direita */
+  }
+
+  @media (max-width: 768px) {
+    /* Para telas pequenas (até 768px), reduza o tamanho dos cards */
+    padding: 1rem; /* Reduza o espaçamento do container */
+  }
 }
+
 .movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
 }
-.movie-card  {
-  max-width: 100%;
+
+.movie-card {
+  width: 100%;
   height: 450px;
   border-radius: 15px; /* Arredondamento das bordas da imagem */
 }
+
 .movie-info {
   margin-top: 10px;
 }
+
 .icons p {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
+
 .icon {
   color: #f00;
   margin-right: 5px;
   background-color: none;
 }
+
 .star-icon {
   color: yellow;
   margin-right: 5px;
   font-size: 18px;
-} .icon {
+}
+
+.icon {
   /* Estilos padrão do ícone do coração */
   cursor: pointer;
   transition: transform 0.3s ease; /* Adicione uma transição suave ao transform */
@@ -56,17 +115,19 @@
 }
 
 .search-box {
-  background-color: black; /* Fundo preto */
+  background-color: #000; /* Fundo preto */
   border-radius: 20px;
   padding: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
 }
+
 .Pesquisar {
   display: flex;
   align-items: center;
 }
+
 .InputPes {
   border: none;
   outline: none;
@@ -77,6 +138,7 @@
   background-color: black; /* Fundo preto */
   color: #fff;
 }
+
 .BtnPes {
   background-color: #b53cf6;
   color: #fff;
@@ -88,9 +150,11 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
+
 .BtnPes:hover {
-  background-color: #b53cf6;
+  background-color: #dc3545;
 }
+
 .BtnLimpar {
   background-color: #dc3545;
   color: #fff;
@@ -102,17 +166,22 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
+
 .BtnLimpar:hover {
   background-color: #c82333;
 }
+
 .InputPes,
 .BtnPes,
 .BtnLimpar {
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
+
+/* Animação de fundo pulsante para a barra de pesquisa */
 .search-box:hover {
   animation: pulse 1s infinite;
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -127,35 +196,8 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
-/* Estilos para telas pequenas (até 768px) */
-@media (max-width: 768px) {
-  .result {
-    margin-bottom: 180px;
-  }
 
-  .card {
-    flex: 0 0 calc(50% - 1rem);
-  }
-}
-
-/* Estilos para telas médias (de 769px a 992px) */
-@media (min-width: 769px) and (max-width: 992px) {
-  .result {
-    margin-top: 30px;
-  }
-
-  .card {
-    flex: 0 0 calc(33.333% - 1rem);
-  }
-}
-
-/* Estilos para telas grandes (acima de 992px) */
-@media (min-width: 993px) {
-  .result {
-    margin-top: 45px;
-  }
-
-  .card {
-    flex: 0 0 calc(25% - 1rem);
-  }
+/* Classe de pulsação para a barra de pesquisa */
+.search-active {
+  animation: pulse 1s infinite;
 }

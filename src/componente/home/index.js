@@ -94,7 +94,6 @@ function Home() {
     <Container>
     <ToastContainer />
     <section id='filmes'>
-      <h1>Seja bem-vindo ao ReelMagic</h1>
       <ScrollToTop isVisible={showScrollToTop}>
         <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>
       </ScrollToTop>

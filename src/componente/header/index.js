@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./header.css";
-import Logo from '../img/Logo-Header.jpg';
 import SearchBar from "./searchBar/index"; // Importe o componente SearchBar
+import "./header.css";
 
 function Header() {
   const [active, setActive] = useState("nav__menu");
@@ -27,7 +26,7 @@ function Header() {
 
   return (
     <nav className="nav">
-      <img className="nav-img" src={Logo} alt="Logo da ReelMagic"/>
+     <h1 className="Magic">ReelMagic</h1>
      
       <ul className={active}>
         <li className="nav__item">
@@ -45,11 +44,6 @@ function Header() {
             Filmes
           </a>
         </li>
-         <li className="nav__item">
-          <a href="#series" className="nav__link" onClick={closeMenu}>
-            Series
-          </a>
-        </li>
         <li className="nav__item">
           <a href="#planos" className="nav__link" onClick={closeMenu}>
             Planos
@@ -60,8 +54,7 @@ function Header() {
             Contatos
           </a>
         </li>
-      </ul>
-     
+      </ul> <SearchBar/>
       <div onClick={navToggle} className={icon}>
         <div className="lineum"></div>
         <div className="linedois"></div>
