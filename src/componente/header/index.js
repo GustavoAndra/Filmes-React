@@ -27,7 +27,7 @@ function Header() {
 
   return (
     <nav className="nav">
-      <img className="nav-img" src={Logo} alt="Logo da ReelMagic" />
+      <img className="nav-img" src={Logo} alt="Logo da ReelMagic"/>
      
       <ul className={active}>
         <li className="nav__item">
@@ -36,7 +36,7 @@ function Header() {
           </a>
         </li>
           <li className="nav__item">
-          <a href="/favorites" className="nav__link" onClick={closeMenu}>
+          <a href="/favoritos" className="nav__link" onClick={closeMenu}>
             Minha Lista
           </a>
         </li>

@@ -117,10 +117,10 @@ function Home() {
                         <img src={`${imagePath}${movie.poster_path}`} alt={movie.title} />
                         <div className="movie-info">
                           <div className="icons">
-                           <p>FAVORITAR <FaHeart
+                           <p><FaHeart
                               onClick={() => toggleFavorite(movie.id)}
                               className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`}
-                            /></p>
+                            />FAVORITE</p>
                             <p style={{ textAlign: 'center' }}>
                               <FaStar
                                 className="star-icon"
@@ -150,7 +150,6 @@ function Home() {
       )}
     </section>
   </Container>
-  
   );
 }
 

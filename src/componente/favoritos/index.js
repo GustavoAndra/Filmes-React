@@ -12,14 +12,9 @@ const Favorites = () => {
   const imagePath = 'https://image.tmdb.org/t/p/w500';
   const KEY = process.env.REACT_APP_KEY;
 
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavoriteMovies(favorites);
-    fetchMovieDetails(favorites);
-  }, []);
 
-  // Função para buscar detalhes dos filmes favoritos na API
-  const fetchMovieDetails = (favorites) => {
+  // Definir fetchMovieDetails como uma função useCallback
+  const fetchMovieDetails = ((favorites) => {
     const promises = favorites.map((movieId) => {
       return fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}&language=pt-BR`)
         .then((response) => response.json())
@@ -33,7 +28,13 @@ const Favorites = () => {
       .then((data) => {
         setMovieDetails(data);
       });
-  };
+  }, [KEY]);
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavoriteMovies(favorites);
+    fetchMovieDetails(favorites);
+  }, [fetchMovieDetails]); // Adicionando fetchMovieDetails ao array de dependências
 
   // Função para verificar se um filme é favorito
   const isMovieFavorite = (movieId) => {
@@ -124,7 +125,6 @@ const Favorites = () => {
       )}
     </div>
   );
-  
 };
 
 export default Favorites;
