@@ -11,20 +11,26 @@ const Favorites = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const imagePath = 'https://image.tmdb.org/t/p/w500';
   const KEY = process.env.REACT_APP_KEY;
+ 
+  // Função para buscar detalhes de um filme favorito na API
+  const fetchFavoriteMovieDetails = (movieId) => {
+    const endpoint = `movie/${movieId}?api_key=${KEY}&language=pt-BR`;
 
-  // Função para buscar detalhes dos filmes favoritos na API
-  const fetchFavoriteMovieDetails = (favorites) => {
-    const promises = favorites.map((movieId) => {
-      const endpoint = `movie/${movieId}?api_key=${KEY}&language=pt-BR`;
+    return fetch(`https://api.themoviedb.org/3/${endpoint}`)
+      .then((response) => response.json())
+      .then((data) => data)
+      .catch((error) => {
+        console.error("Erro ao buscar detalhes do filme:", error);
+        return null;
+      });
+  };
 
-      return fetch(`https://api.themoviedb.org/3/${endpoint}`)
-        .then((response) => response.json())
-        .then((data) => data)
-        .catch((error) => {
-          console.error("Erro ao buscar detalhes do filme:", error);
-          return null;
-        });
-    });
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setFavoriteMovies(favorites);
+
+    // Chame a função para buscar detalhes dos filmes favoritos
+    const promises = favorites.map((movieId) => fetchFavoriteMovieDetails(movieId));
 
     Promise.all(promises).then((favoriteMoviesData) => {
       // Filtrar os filmes que não retornaram null
@@ -33,14 +39,6 @@ const Favorites = () => {
       );
       setMovieDetails(filteredFavoriteMovies);
     });
-  };
-
-  useEffect(() => {
-    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setFavoriteMovies(favorites);
-
-    // Chame a função para buscar detalhes dos filmes favoritos
-    fetchFavoriteMovieDetails(favorites);
   }, []);
 
   // Função para verificar se um filme é favorito
@@ -49,19 +47,22 @@ const Favorites = () => {
   };
 
   // Função para alternar a marcação de um filme como favorito ou desfavorito
-  const toggleFavorite = (movieId) => {
+  const toggleFavorite = async (movieId) => {
     if (isMovieFavorite(movieId)) {
+      // Remova o filme da lista de favoritos
       const updatedFavorites = favoriteMovies.filter((favId) => favId !== movieId);
       setFavoriteMovies(updatedFavorites);
-      // Atualize o localStorage com os filmes favoritos atualizados
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
       notify('Filme desfavoritado com sucesso.');
     } else {
-      const updatedFavorites = [...favoriteMovies, movieId];
-      setFavoriteMovies(updatedFavorites);
-      // Atualize o localStorage com os filmes favoritos atualizados
-      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-      notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
+      // Adicione o filme à lista de favoritos
+      const movie = await fetchFavoriteMovieDetails(movieId);
+      if (movie) {
+        const updatedFavorites = [...favoriteMovies, movieId];
+        setFavoriteMovies(updatedFavorites);
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        notify('Filme favoritado com sucesso. Verifique em "Minha Lista".');
+      }
     }
   };
 
@@ -77,13 +78,14 @@ const Favorites = () => {
   return (
     <div>
       <Header />
-      <h1 id='titulo-favorito'>MY LIST :)</h1>
+      <h1 id='titulo-favorito'>YOUR LIST :)</h1>
       <ToastContainer />
       {favoriteMovies.length === 0 ? (
         <p>Nenhum filme favorito encontrado.</p>
       ) : (
         <div className="row">
-          {movieDetails.map((movie) => {
+          {favoriteMovies.map((movieId) => {
+            const movie = movieDetails.find((m) => m.id === movieId);
             if (movie) {
               return (
                 <div key={movie.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">

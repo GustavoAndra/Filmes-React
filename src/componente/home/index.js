@@ -120,7 +120,7 @@ function Home() {
                            <p><FaHeart
                               onClick={() => toggleFavorite(movie.id)}
                               className={`icon ${isMovieFavorite(movie.id) ? "favorited" : ""}`}
-                            />FAVORITE</p>
+                            /></p>
                             <p style={{ textAlign: 'center' }}>
                               <FaStar
                                 className="star-icon"
