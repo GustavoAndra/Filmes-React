@@ -91,7 +91,7 @@ const Movie = () => {
             <Link to="/">
               <button className="btn btn-primary">Voltar</button>
             </Link>
-            <h2 id="titulo-Relacionados">Filmes Relacionados:</h2>
+            <h2 id="titulo-Relacionados">Talvez você goste:</h2>
             <Slider
               dots={false}
               infinite={true}
