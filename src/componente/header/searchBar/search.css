@@ -161,4 +161,6 @@
 }
 .search-active {
   animation: pulse 1s infinite;
+}#botao{
+  background-color: #F00;
 }

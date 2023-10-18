@@ -12,19 +12,18 @@ p{
 }
 .movie-container{
     display: flex;
-    align-items: flex-start; /* Alinha os elementos verticalmente ao topo */
-    justify-content: space-between; /* Espaço entre a imagem e os detalhes */
+    align-items: flex-start; 
+    justify-content: space-between; 
   }
   .big-image {
     max-width: 100%;
-    height: 700px; /* Defina a altura desejada aqui */
+    height: 700px;
     display: block;
     margin: 0 auto;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
-  
   .movie-details {
-    flex: 2; /* Os detalhes ocupam 2/3 do espaço disponível */
+    flex: 2;
   }
   .related-movies-carousel {
     margin-top: 20px;
@@ -34,6 +33,9 @@ p{
     margin: 1rem;
     text-align: center;
     border-radius: 5px;
+  }  .related-movie:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
   }
   .related-movie-title {
     margin-top: 10px;
@@ -64,7 +66,7 @@ p{
   display: flex;
   flex-direction: column;
   width: 95%;
-  color: #CECECE;
+  color: #cecece;
   font-weight: 600;
   font-size: 12pt;
   text-decoration: none;

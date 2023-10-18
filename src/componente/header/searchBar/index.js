@@ -127,7 +127,7 @@ function Search() {
                       </div>
                     </div>
                     <Link to={`/${movie.id}`}>
-                      <button id='#botao'>Detalhes</button>
+                      <button id="botao">Detalhes</button>
                     </Link>
                   </div>
                 </div>

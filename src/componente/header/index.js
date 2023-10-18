@@ -27,7 +27,7 @@ function Header() {
   return (
     <nav className="nav">
      <h1 className="Magic">ReelMagic</h1>
-     
+     <SearchBar/> 
       <ul className={active}>
         <li className="nav__item">
           <a href="/" className="nav__link" onClick={closeMenu}>
@@ -53,10 +53,11 @@ function Header() {
           <a href="#contatos" className="nav__link" onClick={closeMenu}>
             Contatos
           </a>
-        </li>
-       
-      </ul> <SearchBar/> 
+        </li>   
+      </ul> 
+     
       <div onClick={navToggle} className={icon}>
+       
         <div className="lineum"></div>
         <div className="linedois"></div>
         <div className="linetres"></div>
