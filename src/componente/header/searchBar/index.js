@@ -61,13 +61,17 @@ function Search() {
   const notify = (message) => {
     toast.success(message, {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000,
+      autoClose: 3000,
+      style: {
+        fontSize: '13px', // Defina o tamanho da fonte desejado
+      },
     });
   };
+  
   return (
     <>
       <ToastContainer />
-      <div className="search-box"></div>
+      <div className="search-box">
       <form onSubmit={handleSearch} className="Pesquisar">
         <input
           type="text"
@@ -85,6 +89,7 @@ function Search() {
           </button>
         )}
       </form>
+      </div>
       {showResults && (
         <div className="resultMovie ">
           <h2 className="result">Resultados da sua Pesquisa:</h2>

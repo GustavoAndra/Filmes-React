@@ -86,7 +86,10 @@ function Home() {
   const notify = (message) => {
     toast.success(message, {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000,
+      autoClose: 3000,
+      style: {
+        fontSize: '13px',
+      },
     });
   };
 

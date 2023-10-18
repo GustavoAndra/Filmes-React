@@ -68,10 +68,12 @@ const Favorites = () => {
 
   // Função para exibir notificações usando react-toastify
   const notify = (message) => {
-    toast.info(message, {
+    toast.success(message, {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000, // Fechar a notificação após 2 segundos
-      className: 'custom-toast-error', // Adicione a classe CSS personalizada aqui
+      autoClose: 3000,
+      style: {
+        fontSize: '13px',
+      },
     });
   };
 
