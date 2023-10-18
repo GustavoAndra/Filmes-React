@@ -3,33 +3,37 @@
 }
 p{
   font-size: 15px;
+  margin: 15px 10px 10px  10px;
 }
- h4{
+ h4 ,h2{
+  font-size: 20px;
   color: #FFD700;
+  margin: 15px 10px 10px  10px;
 }
 .movie-container{
     display: flex;
     align-items: flex-start; /* Alinha os elementos verticalmente ao topo */
     justify-content: space-between; /* Espaço entre a imagem e os detalhes */
   }
-  .img-fluid{
-    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
-    height: auto;
-    border-radius: 5px;
-    align-items: center;
+  .big-image {
+    max-width: 100%;
+    height: 700px; /* Defina a altura desejada aqui */
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   }
+  
   .movie-details {
     flex: 2; /* Os detalhes ocupam 2/3 do espaço disponível */
   }
   .related-movies-carousel {
     margin-top: 20px;
   }
-  .related-movie {
-    margin: 0 10px;
-    text-align: center;
-  }
   .related-movie img {
-    width: 100%;
+    padding: 5px;
+    margin: 1rem;
+    text-align: center;
+    border-radius: 5px;
   }
   .related-movie-title {
     margin-top: 10px;

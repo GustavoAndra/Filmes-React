@@ -8,7 +8,7 @@ import Header from './componente/header/index';
 
 const Main = () => (
   <div>
-    <Header /> {/* Movido para dentro do componente Main */}
+    <Header /> 
     <Home />
     <Proposta/>
   </div>

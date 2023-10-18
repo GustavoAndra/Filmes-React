@@ -68,11 +68,11 @@ const Movie = () => {
             <h1>{movie.title}</h1>
             <h2 id="lancamento">Data de lançamento: {movie.release_date}</h2>
             <div className="descricao">
-              <h4 fon>Descrição:</h4>
+              <h4>Descrição:</h4>
               <p className="movie-desc">{movie.overview}</p>
             </div>
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <h4>Gênero:</h4>
                 <p>
                   {movie.genres?.map((genre, index) => (
@@ -83,7 +83,7 @@ const Movie = () => {
                   ))}
                 </p>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-12">
                 <h4>Duração:</h4>
                 <p>{movie.runtime} minutos</p>
               </div>
@@ -91,28 +91,37 @@ const Movie = () => {
             <Link to="/">
               <button className="btn btn-primary">Voltar</button>
             </Link>
-            <h2 id="titulo-Relacionados">Talvez você goste</h2>
-            <Slider
-              dots={false}
-              infinite={true}
-              slidesToShow={4}
-              slidesToScroll={1}
-              className="related-movies-carousel"
-            >
-              {relatedMovies.map((relatedMovie) => (
-                <div key={relatedMovie.id} className="related-movie">
-                  <Link to={`/${relatedMovie.id}`}>
-                    <img
-                      src={`${imagePath}${relatedMovie.poster_path}`}
-                      alt={relatedMovie.title}
-                      className="img-fluid"
-                    />
-                    <p className="related-movie-title">{relatedMovie.title}</p>
-                  </Link>
-                </div>
-              ))}
-            </Slider>
-            {trailerKey && (
+          </div>
+        </div>
+      </div>
+  
+      <div className="container-fluid">
+  <div className="row">
+    <div className="col-md-12">
+      <h2 id="titulo-Relacionados">Talvez você goste</h2>
+      <Slider
+        dots={false}
+        infinite={true}
+        slidesToShow={4}
+        slidesToScroll={1}
+        autoplay={true}
+        className="related-movies-carousel"
+      >
+        {relatedMovies.map((relatedMovie) => (
+          <div key={relatedMovie.id} className="related-movie">
+            <Link to={`/${relatedMovie.id}`}>
+              <img
+                src={`${imagePath}${relatedMovie.poster_path}`}
+                alt={relatedMovie.title}
+                className="img-fluid"
+              />
+              <p className="related-movie-title">{relatedMovie.title}</p>
+            </Link>
+          </div>
+        ))}
+      </Slider>
+    </div>
+          {trailerKey && (
               <div>
                 <h2>Trailer:</h2>
                 <div className="trailer">
@@ -128,11 +137,10 @@ const Movie = () => {
                 </div>
               </div>
             )}
-          </div>
         </div>
       </div>
     </section>
-  );
+  );  
 };
 
 export default Movie;
