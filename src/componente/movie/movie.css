@@ -44,7 +44,7 @@ p{
   border: none;
   border-radius: 5px;
   color: #fff;
-  background-color: #b53cf6;
+  background-color: #f00;
   font-weight: bold;
   font-size: 1.6rem;
   cursor: pointer;
@@ -55,7 +55,8 @@ p{
     background-color: #f00;
     transform: scale(1.05); /* Efeito de escala ao passar o mouse */
   }
-} .trailer {
+} 
+.trailer {
   display: flex;
   flex-direction: column;
   width: 95%;

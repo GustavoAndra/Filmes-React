@@ -116,7 +116,6 @@ const Movie = () => {
               <div>
                 <h2>Trailer:</h2>
                 <div className="trailer">
-                 <div className="embed-responsive embed-responsive-4by9">
                   <iframe
                     width="560"
                     height="315"
@@ -126,7 +125,6 @@ const Movie = () => {
                     allowFullScreen
                     className="embed-responsive-item"
                   ></iframe>
-                </div> {/*Fim do container*/}
                 </div>
               </div>
             )}

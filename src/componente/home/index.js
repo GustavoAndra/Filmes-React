@@ -92,7 +92,7 @@ function Home() {
 
   return (
     <Container>
-    <ToastContainer />
+      <ToastContainer/>
     <section id='filmes'>
       <ScrollToTop isVisible={showScrollToTop}>
         <ScrollToTopButton href="#">&uarr;</ScrollToTopButton>

@@ -82,7 +82,7 @@ export const Btn = styled.button`
   border: none;
   border-radius: 5px;
   color: #fff;
-  background-color:#b53cf6;
+  background-color:#F00;
   font-weight: bold;
   font-size: 1.5rem;
   cursor: pointer;
