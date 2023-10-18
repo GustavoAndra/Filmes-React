@@ -98,12 +98,12 @@ const Favorites = () => {
                     <div className="card-body">
                       <div className="d-flex justify-content-between">
                         {isMovieFavorite(movie.id) ? (
-                          <FaHeartBroken
+                         <p><FaHeartBroken
                             onClick={() => toggleFavorite(movie.id)}
                             className="icon desfavorited"
-                          />
+                          /></p> 
                         ) : (
-                          <FaHeart className="icon favorited" />
+                      <FaHeart className="icon favorited" /> 
                         )}
                         <p className="card-text">
                           <FaStar

@@ -46,56 +46,46 @@
   .icon {
     margin-right: 0.5rem; /* Reduza a margem direita */
   }
-
   @media (max-width: 768px) {
     /* Para telas pequenas (até 768px), reduza o tamanho dos cards */
     padding: 1rem; /* Reduza o espaçamento do container */
   }
 }
-
 .movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3);
 }
-
 .movie-card {
   width: 100%;
   height: 450px;
   border-radius: 15px; /* Arredondamento das bordas da imagem */
 }
-
 .movie-info {
   margin-top: 10px;
 }
-
 .icons {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
-
 .icon {
   color: #f00;
   margin-right: 5px;
   background-color: none;
 }
-
 .star-icon {
   color: yellow;
   margin-right: 5px;
   font-size: 18px;
 }
-
 .icon {
   /* Estilos padrão do ícone do coração */
   cursor: pointer;
   transition: transform 0.3s ease; /* Adicione uma transição suave ao transform */
 }
-
 .favorited {
   transform: scale(1.2); /* Um exemplo de transformação para o efeito de clique */
 }
-
 .search-box {
   background-color: #000; /* Fundo preto */
   border-radius: 20px;
@@ -104,12 +94,10 @@
   display: flex;
   align-items: center;
 }
-
 .Pesquisar {
   display: flex;
   align-items: center;
 }
-
 .InputPes {
   border: none;
   outline: none;
@@ -117,10 +105,9 @@
   font-size: 16px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  background-color: black; /* Fundo preto */
+  background-color: #000;
   color: #fff;
 }
-
 .BtnPes {
   background-color: #F00;
   color: #fff;
@@ -132,11 +119,9 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-
 .BtnPes:hover {
   background-color: #dc3545;
 }
-
 .BtnLimpar {
   background-color: #dc3545;
   color: #fff;
@@ -148,22 +133,18 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
-
 .BtnLimpar:hover {
   background-color: #c82333;
 }
-
 .InputPes,
 .BtnPes,
 .BtnLimpar {
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
-
 /* Animação de fundo pulsante para a barra de pesquisa */
 .search-box:hover {
   animation: pulse 1s infinite;
 }
-
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -178,8 +159,6 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 }
-
-/* Classe de pulsação para a barra de pesquisa */
 .search-active {
   animation: pulse 1s infinite;
 }
